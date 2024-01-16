@@ -1,9 +1,10 @@
-import Image from 'next/image'
+import ContactUs from './contactUs/ContactUs'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Home</h1>
+    <main>
+      <h1 className='text-center my-5'>Home section.</h1>
+      <ContactUs/>
     </main>
   )
 }

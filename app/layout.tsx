@@ -17,6 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+        <head>
+        <link rel="icon" type="image/svg+xml" href="https://i.ibb.co/grkxcB0/bookwarp.png" />
+          <title>BookWarp</title>
+        </head>
         <body className={inter.className}>
           <Navbar/>
           <main>
