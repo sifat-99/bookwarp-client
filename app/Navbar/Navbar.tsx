@@ -76,9 +76,7 @@ export default function navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="btn">
-          <Link href="/login">Log In</Link>
-        </button>
+        <Link href="/login"><button className="btn btn-neutral">Login</button></Link>
       </div>
     </div>
   );
