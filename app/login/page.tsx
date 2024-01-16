@@ -30,12 +30,12 @@ const Login = () => {
           <form className="card-body w-96" onSubmit={handleLogin}>
             <div className="form-control">
               <label htmlFor="email" className="label">
-                <span className="label-text">Email</span>
+                <span className="label-text text-white text-2xl font-bold">Email</span>
               </label>
               <input
                 type="email"
                 id="email"
-                placeholder="email"
+                placeholder="Your email"
                 className="input input-bordered"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -44,12 +44,12 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label htmlFor="password" className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text text-white text-2xl font-bold">Password</span>
               </label>
               <input
                 type="password"
                 id="password"
-                placeholder="password"
+                placeholder="Your password"
                 className="input input-bordered"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
