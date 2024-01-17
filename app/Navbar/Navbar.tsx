@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function navbar() {
   return (
-    <div className="navbar z-20 bg-base-100 sticky top-0">
+    <div className="navbar z-20 bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] sticky top-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
