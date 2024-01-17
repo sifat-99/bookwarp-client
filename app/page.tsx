@@ -1,4 +1,4 @@
-import Banner from "./banner/banner";
+import Banner from "./banner/Banner";
 import ContactUs from "./contactUs/ContactUs";
 export default function Home() {
   return (
