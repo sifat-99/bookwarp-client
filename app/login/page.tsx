@@ -3,6 +3,7 @@
 
 import React, { useState } from "react";
 import App from "../tsParticles";
+import Link from "next/link";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +30,11 @@ const Login = () => {
         <div className="card shrink-0 w-full max-w-sm shadow-2xl" style={myStyle}>
           <form className="card-body w-96" onSubmit={handleLogin}>
             <div className="form-control">
+            <label className="flex items-center justify-center">
+                <span className="label-text text-white text-4xl font-bold underline mb-8">
+                  Login
+                </span>
+              </label>
               <label htmlFor="email" className="label">
                 <span className="label-text text-white text-2xl font-bold">Email</span>
               </label>
@@ -36,7 +42,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 placeholder="Your email"
-                className="input input-bordered"
+                className="input input-bordered bg-white text-black"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -50,18 +56,18 @@ const Login = () => {
                 type="password"
                 id="password"
                 placeholder="Your password"
-                className="input input-bordered"
+                className="input input-bordered bg-white text-black"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <Link href="#" className="label-text-alt link link-hover text-green-200 mt-2">
                   Forgot password?
-                </a>
+                </Link>
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-2 ">
               <button
                 type="submit"
                 className="btn text-white"
@@ -69,6 +75,8 @@ const Login = () => {
               >
                 Login
               </button>
+
+              <p className="text-red-600 mt-2">Don&apos;t have any account? <Link href={"/registration"} className="text-blue-600 hover:underline">Register</Link></p>
             </div>
           </form>
         </div>
