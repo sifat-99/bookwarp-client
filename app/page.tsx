@@ -1,10 +1,11 @@
-import ContactUs from './contactUs/ContactUs'
-
+import Banner from "./banner/banner";
+import ContactUs from "./contactUs/ContactUs";
 export default function Home() {
   return (
     <main>
+      <Banner />
       <h1 className="font-bold text-3xl text-center mt-14 mb-2">Contact Us</h1>
-      <ContactUs/>
+      <ContactUs />
     </main>
-  )
+  );
 }
