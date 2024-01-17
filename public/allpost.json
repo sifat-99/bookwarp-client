@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title":"5 benefits of reading everyday",
+        "cover": "https://i.ibb.co/VqHWxgp/blog1.jpg",
+        "description":"There are so many benefits to reading books.But let's face it: It can be challenging to motivate ourselves to read a 382-page book when we can watch the movie, listen to the audiobook, or watch a YouTube video summary instead."
+
+     },
+     {
+        "id": 2,
+        "title":"Importance of Book exchange",
+        "cover": "https://i.ibb.co/dB19dkG/blog1.jpg",
+        "description":"Book swaps can be a great way to share your love of reading and discover exciting new books, and also give children the opportunity to choose a book for themselves that excite them and start to build a lifelong love of reading. Book swaps are also a great way to support and improve literacy levels in the community."
+
+     },
+     {
+        "id": 3,
+        "title":"What is a good review?",
+        "cover": "https://i.ibb.co/27n4Tpy/blog3.jpg",
+        "description":"A good review is a positive and favorable evaluation shared by a satisfied customer or user of a product, service, or business. In a good review, the individual highlights the aspects they enjoyed, such as exceptional service, high-quality products, or a memorable experience."
+
+     }
+]
