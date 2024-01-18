@@ -10,7 +10,7 @@ export default function navbar() {
     <li><Link className="rounded-none" href="#">Test</Link></li>
   </>
   return (
-    <div className="navbar z-20 bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] py-5 md:px-10 sticky text-white top-0 rounded-b-lg">
+    <div className="navbar z-20 bg-transparent md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky text-black md:text-white top-0 rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,7 +31,7 @@ export default function navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link href="/login"><button className="btn btn-outline text-white">Login</button></Link>
+        <Link href="/login"><button className="btn btn-outline text-black md:text-white">Login</button></Link>
       </div>
     </div>
   );
