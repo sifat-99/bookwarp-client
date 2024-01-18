@@ -73,10 +73,9 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-2 ">
-              <button
+            <button
                 type="submit"
-                className="btn text-white w-full"
-                style={{ backgroundColor: "#34c1ce", borderRadius: "12px" }}
+                className="btn border-none text-white text-xl  bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] hover:bg-black"
               >
                 Login
               </button>
