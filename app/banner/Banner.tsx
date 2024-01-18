@@ -1,5 +1,4 @@
 import Image from "next/image";
-import banner from "./banner2.png";
 const Banner = () => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center w-full px-4 lg:h-[750px] md:px-6 lg:px-20">
@@ -12,7 +11,7 @@ const Banner = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 flex justify-center items-center ">
-        <Image className="object-cover hidden md:block" src={banner} alt="Landscape picture" height={700} width={500} />
+        <Image className="object-cover hidden md:block" src="https://i.ibb.co/zJqP1Ky/banner.png" alt="Landscape picture" height={700} width={500} />
       </div>
     </div>
   );
