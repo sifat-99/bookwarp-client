@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaList } from "react-icons/fa";
 
 export default function navbar() {
   const links = <>
     <li><Link className="rounded-none" href="/">Home</Link></li>
-    <li><Link className="rounded-none" href="#">Test</Link></li>
+    <li><Link className="rounded-none" href="/allBooks">All Books</Link></li>
     <li><Link className="rounded-none" href="/blogs">Blogs</Link></li>
     <li><Link className="rounded-none" href="#">Test</Link></li>
   </>
@@ -20,7 +21,7 @@ export default function navbar() {
           </ul>
         </div>
         <div className="flex items-center">
-          <img className="w-14" src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" alt="logo"/>
+          <Image height={56} width={56} src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" alt="logo"/>
           <h1 className="text-lg md:text-3xl font-bold ml-2">BookWarp</h1>
         </div>
       </div>
