@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 import Navbar from './Navbar/Navbar'
 import './globals.css'
 import { ToastContainer } from 'react-toastify'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="https://i.ibb.co/grkxcB0/bookwarp.png" />
           <title>BookWarp</title>
         </head>
-        <body className={inter.className}>
+        <body className="container mx-auto">
           <Navbar/>
           <main>
             {children}
