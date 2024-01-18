@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 // import { Inter } from 'next/font/google'
 import Navbar from './Navbar/Navbar'
+import Footer from './footer/Footer'
 import './globals.css'
 import { ToastContainer } from 'react-toastify'
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <main>
             {children}
           </main>
+          <Footer/>
           <ToastContainer/>
         </body>
     </html>
