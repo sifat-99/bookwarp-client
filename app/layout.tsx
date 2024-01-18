@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <head>
-        <link rel="icon" type="image/svg+xml" href="https://i.ibb.co/grkxcB0/bookwarp.png" />
+        <link rel="icon" type="image/svg+xml" href="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" />
           <title>BookWarp</title>
         </head>
         <body className="container mx-auto">
