@@ -8,8 +8,8 @@ import Swal from 'sweetalert2';
 const contactUs = () => {
     
     return (
-        <div className="px-5 lg:px-0">
-            <div className="hero lg:h-[650px] bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-lg md:my-10">
+        <div className="px-5 lg:px-0 my-10">
+            <div className="hero lg:h-[550px] bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-lg md:mb-10">
               <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left ">
                   <Lottie className="z-0 md:h-[400px] lg:h-[600px]" animationData={msgAnimation}/>

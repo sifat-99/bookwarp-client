@@ -1,0 +1,122 @@
+[
+    {
+      "id": 1,
+      "cover": "https://i.ibb.co/R0CKMxn/The-Hidden-Gem.jpg",
+      "title": "The Hidden Gem",
+      "writer": "John Doe",
+      "price": 19,
+      "ratings": 4.5,
+      "category": "Mystery",
+      "description": "A thrilling mystery novel that keeps you on the edge of your seat."
+    },
+    {
+      "id": 2,
+      "cover": "https://i.ibb.co/LRQhqLK/Echoes-of-Eternity.jpg",
+      "title": "Echoes of Eternity",
+      "writer": "Jane Smith",
+      "price": 24,
+      "ratings": 4.2,
+      "category": "Fantasy",
+      "description": "Embark on a magical journey through a world of eternal echoes and mythical creatures."
+    },
+    {
+      "id": 3,
+      "cover": "https://i.ibb.co/2PMRrkF/wishper.jpg",
+      "title": "Whispers in the Wind",
+      "writer": "Alice Johnson",
+      "price": 15,
+      "ratings": 4.0,
+      "category": "Romance",
+      "description": "A heartwarming love story set against the backdrop of a small town and gentle breezes."
+    },
+    {
+      "id": 4,
+      "cover": "https://i.ibb.co/y0wpJwP/Chronicles-of-Cosmos.jpg",
+      "title": "Chronicles of Cosmos",
+      "writer": "Michael Brown",
+      "price": 29,
+      "ratings": 4.7,
+      "category": "Science Fiction",
+      "description": "Explore the vastness of the cosmos through this epic science fiction saga."
+    },
+    {
+      "id": 5,
+      "cover": "https://i.ibb.co/9grN2nn/Whirlwind-of-Words.jpg",
+      "title": "Whirlwind of Words",
+      "writer": "Emily White",
+      "price": 17,
+      "ratings": 4.2,
+      "category": "Literary Fiction",
+      "description": "Immerse yourself in the whirlwind of words that paint a vivid tapestry of emotions and ideas."
+    },
+    {
+      "id": 6,
+      "cover": "https://i.ibb.co/g9wRc9h/Rhythms-of-Rain.jpg",
+      "title": "Rhythms of Rain",
+      "writer": "Mia Rahman",
+      "price": 16,
+      "ratings": 4.1,
+      "category": "Poetry",
+      "description": "Immerse yourself in the poetic symphony of raindrops and emotions."
+    },
+    {
+      "id": 7,
+      "cover": "https://i.ibb.co/XZMS1Sb/Legacy-of-Legends.jpg",
+      "title": "Legacy of Legends",
+      "writer": "Alex Turner",
+      "price": 26,
+      "ratings": 4.8,
+      "category": "Historical Fiction",
+      "description": "Witness the unfolding of history through the legendary figures who shaped civilizations."
+    },
+    {
+      "id": 8,
+      "cover": "https://i.ibb.co/myx1P0q/Under-a-Mango-Tree.jpg",
+      "title": "Under the Mango Tree",
+      "writer": "Sophia Ahmed",
+      "price": 18,
+      "ratings": 4.3,
+      "category": "Drama",
+      "description": "A poignant tale of family, love, and secrets, set in a quaint village under the shade of a mango tree."
+    },
+    {
+      "id": 9,
+      "cover": "https://i.ibb.co/bdTrgmc/the-silent-observer.jpg",
+      "title": "The Silent Observer",
+      "writer": "David Wilson",
+      "price": 21,
+      "ratings": 4.6,
+      "category": "Thriller",
+      "description": "Unravel the mystery of a silent observer who holds the key to a series of unsettling events."
+    },
+    {
+      "id": 10,
+      "cover": "https://i.ibb.co/BcRb7RQ/Under-a-Mango-Tree.jpg",
+      "title": "Sunset Serenade",
+      "writer": "Eva Roberts",
+      "price": 20,
+      "ratings": 4.4,
+      "category": "Contemporary Fiction",
+      "description": "An enchanting story of love and self-discovery set against the backdrop of a beautiful sunset."
+    },
+    {
+      "id": 11,
+      "cover": "https://i.ibb.co/KrSTPbN/Beyond-Borders.jpg",
+      "title": "Beyond Borders",
+      "writer": "Rajiv Gupta",
+      "price": 23,
+      "ratings": 4.5,
+      "category": "Adventure",
+      "description": "Embark on a thrilling adventure that transcends boundaries and explores the unknown."
+    },
+    {
+      "id": 12,
+      "cover": "https://i.ibb.co/bBJJWgL/The-Enchanted-Garden.jpg",
+      "title": "The Enchanted Garden",
+      "writer": "Daniel Harper",
+      "price": 22,
+      "ratings": 4.7,
+      "category": "Fantasy",
+      "description": "Discover the wonders of an enchanted garden where magic blooms and fantastical creatures roam."
+    }
+]
