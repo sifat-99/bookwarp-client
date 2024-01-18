@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import App from "../tsParticles";
 import Link from "next/link";
+import { FcGoogle  } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { LuGithub } from "react-icons/lu";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -34,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen">
+    <div className="hero">
       <App />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div
@@ -49,7 +52,7 @@ const Login = () => {
                 </span>
               </label>
               <label htmlFor="email" className="label">
-                <span className="label-text text-black text-2xl font-bold">
+                <span className="label-text text-white text-xl font-bold">
                   Your Name
                 </span>
               </label>
@@ -65,7 +68,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label htmlFor="email" className="label">
-                <span className="label-text text-black text-2xl font-bold">
+                <span className="label-text text-white text-xl font-bold">
                   Email
                 </span>
               </label>
@@ -81,7 +84,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label htmlFor="image" className="label">
-                <span className="label-text text-black text-2xl font-bold">
+                <span className="label-text text-white text-xl font-bold">
                   Upload Photo
                 </span>
               </label>
@@ -101,7 +104,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label htmlFor="password" className="label">
-                <span className="label-text text-black text-2xl font-bold">
+                <span className="label-text text-white text-xl font-bold">
                   Password
                 </span>
               </label>
@@ -118,11 +121,35 @@ const Login = () => {
             <div className="form-control mt-6">
               <button
                 type="submit"
-                className="btn border-none text-white text-xl  bg-[#41e1ef] hover:bg-black"
+                className="btn border-none text-white text-xl  bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] hover:bg-black"
               >
                 Registration
               </button>
+              <p className="text-white mt-2">
+                Already have an account?{" "}
+                <Link href={"/login"} className="text-blue-600 hover:underline">
+                  Login
+                </Link>
+              </p>
+                <hr className="mt-4"/>
+              <div className="flex items-center justify-center gap-4">
+                <label className="label-text-alt link text-lg link-hover text-white mt-2 flex items-center gap-2">
+                  Or login with
+                </label>
+
+                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 ">
+                  <FcGoogle />
+                </button>
+                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+                  <FaFacebook />
+                </button>
+                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+                  <LuGithub />
+                </button>
+                </div>
+                <hr className="mt-2"/>
             </div>
+            
           </form>
         </div>
       </div>
