@@ -51,7 +51,7 @@ const footer = () => {
           </div>
           <footer className="footer footer-center px-4 mt-10 text-white">
             <aside>
-              <p>Copyright © 2023 - All right reserved by BookWrap Ltd</p>
+              <p>Copyright © 2023 - All right reserved by Team Electro Coders</p>
             </aside>
           </footer>
         </div>
