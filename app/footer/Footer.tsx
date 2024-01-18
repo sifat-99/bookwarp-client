@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const footer = () => {
   return (
     <footer className="mt-10">
-      <div className="bg-[#1E2833] pb-6 rounded-t-lg">
+      <div className="bg-gradient-to-r from-[#325168] to bg-[#297b83] pb-6 rounded-t-lg">
         <div className="container mx-auto">
           <div className="flex justify-between py-4 px-12">
             <div className="flex flex-col justify-center items-center">
