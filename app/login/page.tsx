@@ -4,6 +4,11 @@
 import React, { useState } from "react";
 import App from "../tsParticles";
 import Link from "next/link";
+import { FcGoogle  } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { LuGithub } from "react-icons/lu";
+import { FaHandPointDown } from "react-icons/fa";
+import { IoMdLogIn } from "react-icons/io";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,19 +29,19 @@ const Login = () => {
   };
 
   return (
-    <div className="hero min-h-screen">
+    <div className="hero mt-12">
         <App/>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card shrink-0 w-full max-w-sm shadow-2xl" style={myStyle}>
           <form className="card-body w-96" onSubmit={handleLogin}>
             <div className="form-control">
             <label className="flex items-center justify-center">
-                <span className="label-text text-white text-4xl font-bold underline mb-8">
-                  Login
+                <span className="label-text text-white text-4xl font-bold underline mb-8 flex items-center gap-2">
+                   <IoMdLogIn /> Login
                 </span>
               </label>
               <label htmlFor="email" className="label">
-                <span className="label-text text-white text-2xl font-bold">Email</span>
+                <span className="label-text text-white text-xl font-bold">Email</span>
               </label>
               <input
                 type="email"
@@ -50,7 +55,7 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label htmlFor="password" className="label">
-                <span className="label-text text-white text-2xl font-bold">Password</span>
+                <span className="label-text text-white text-xl font-bold">Password</span>
               </label>
               <input
                 type="password"
@@ -62,7 +67,7 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <Link href="#" className="label-text-alt link link-hover text-green-200 mt-2">
+                <Link href="#" className="label-text-alt link text-lg link-hover text-green-200 mt-2">
                   Forgot password?
                 </Link>
               </label>
@@ -70,15 +75,32 @@ const Login = () => {
             <div className="form-control mt-2 ">
               <button
                 type="submit"
-                className="btn text-white"
-                style={{ backgroundColor: "#34c1ce" }}
+                className="btn text-white w-full"
+                style={{ backgroundColor: "#34c1ce", borderRadius: "12px" }}
               >
                 Login
               </button>
 
-              <p className="text-red-600 mt-2">Don&apos;t have any account? <Link href={"/registration"} className="text-blue-600 hover:underline">Register</Link></p>
+              <p className="text-white mt-2">Don&apos;t have any account? <Link href={"/registration"} className="text-blue-600 hover:underline">Register</Link></p>
+            </div>
+            <div className="flex items-center justify-center">
+              <label className="label-text-alt link text-lg link-hover text-white mt-2 flex items-center gap-2">
+                Or login with <FaHandPointDown />
+              </label>
+            </div>
+            <div className="flex items-center justify-center gap-6">
+                <button  className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 ">
+                <FcGoogle />
+                </button>
+                <button  className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+                <FaFacebook />
+                </button>
+                <button  className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+                <LuGithub />
+                </button>
             </div>
           </form>
+            
         </div>
       </div>
     </div>
