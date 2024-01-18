@@ -1,39 +1,30 @@
-// import {
-//   FacebookLogo,
-//   GithubLogo,
-//   InstagramLogo,
-//   TwitterLogo,
-//   YoutubeLogo,
-// } from "@phosphor-icons/react";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+
 const footer = () => {
   return (
-    <footer className="">
-      <div className="bg-[#1E2833] pb-6">
+    <footer className="mt-10">
+      <div className="bg-[#1E2833] pb-6 rounded-t-lg">
         <div className="container mx-auto">
-          <div className="flex justify-between pt-10 px-12">
+          <div className="flex justify-between py-4 px-12">
             <div className="flex flex-col justify-center items-center">
-              <h2 className="text-white text-xl ">BookWrap</h2>
+              <h2 className="text-white text-2xl font-bold">BookWrap</h2>
             </div>
-            <div className="flex gap-6 md:gap-10 items-center">
-              <p className="text-white text-xl">Ready to get started?</p>
-              <button className="bg-white text-3xl font-bold py-2 md:py-4 px-4 md:px-12 rounded-lg">
-                Exchange
-              </button>
+            <div className="flex gap-2 md:gap-3 items-center">
+              <p className="text-white text-lg">Ready to get started?</p>
+              <button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">Exchange</button>
             </div>
           </div>
-          <hr className="my-10" />
-          <div className="text-white px-12 justify-center items-center grid grid-cols-2 md:grid-cols-4 gap-6 ">
+          <hr/>
+          <div className="text-white pt-7 px-12 justify-center items-center grid grid-cols-2 md:grid-cols-4 gap-6 ">
             <div>
               <h3 className="text-xl font-semibold pb-7">
                 Subscribe to our newsletter
               </h3>
               <div className="flex gap-2">
-                {/* <FacebookLogo size={26} />
-                <InstagramLogo size={26} />
-                <TwitterLogo size={26} />
-                <GithubLogo size={26} />
-                <YoutubeLogo size={26} /> */}
-                <p>Icon will be here</p>
+                <FaFacebook className="text-xl"/>
+                <FaTwitter className="text-xl"/>
+                <FaLinkedin className="text-xl"/>
+                <FaInstagram className="text-xl"/>
               </div>
             </div>
             <div>
@@ -58,7 +49,7 @@ const footer = () => {
               <p>Offline</p>
             </div>
           </div>
-          <footer className="footer footer-center p-4 mt-16 text-white">
+          <footer className="footer footer-center px-4 mt-10 text-white">
             <aside>
               <p>Copyright © 2023 - All right reserved by BookWrap Ltd</p>
             </aside>
