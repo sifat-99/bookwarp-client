@@ -9,7 +9,7 @@ export default function navbar() {
     <li><Link className="rounded-none" href="#">Test</Link></li>
   </>
   return (
-    <div className="navbar z-20 bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] py-8 md:px-10 sticky text-white top-0">
+    <div className="navbar z-20 bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] py-5 md:px-10 sticky text-white top-0 rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,7 +20,7 @@ export default function navbar() {
           </ul>
         </div>
         <div className="flex items-center">
-          <img className="w-14" src="https://i.ibb.co/grkxcB0/bookwarp.png" alt="logo"/>
+          <img className="w-14" src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" alt="logo"/>
           <h1 className="text-lg md:text-3xl font-bold ml-2">BookWarp</h1>
         </div>
       </div>
