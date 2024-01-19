@@ -21,8 +21,8 @@ export default function navbar() {
           </ul>
         </div>
         <div className="flex items-center">
-          <Image height={56} width={56} src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" alt="logo"/>
-          <h1 className="text-lg md:text-3xl font-bold ml-2">BookWarp</h1>
+          <Link href="/"><Image height={56} width={56} src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png" alt="logo"/></Link>
+          <Link href="/"><h1 className="text-lg md:text-3xl font-bold ml-2">BookWarp</h1></Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
