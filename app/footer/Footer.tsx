@@ -9,7 +9,7 @@ const footer = () => {
             <div className="flex flex-col justify-center items-center">
               <h2 className="text-white text-2xl font-bold">BookWrap</h2>
             </div>
-            <div className="flex gap-2 md:gap-3 items-center">
+            <div className="flex flex-col md:flex-row gap-2 md:gap-3 items-center">
               <p className="text-white text-lg">Ready to get started?</p>
               <button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">Exchange</button>
             </div>
