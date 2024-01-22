@@ -6,7 +6,7 @@ import Link from "next/link";
 const Books = () => {
     const [allBooks, setAllBooks] = useState([]);
     useEffect(()=>{
-        fetch('allBooks.json')
+        fetch('http://localhost:4000/allBooks')
         .then(res => res.json())
         .then(data => setAllBooks(data))
     },[])
