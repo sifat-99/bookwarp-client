@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 const Blogs = () => {
     const [allBlogs, setAllBlogs] = useState<any>([]);
     useEffect(()=>{
-        fetch('http://localhost:4000/allBlogs')
+        fetch('https://bookwarp-server.vercel.app/allBlogs')
         .then(res => res.json())
         .then(data => setAllBlogs(data))
     },[])
