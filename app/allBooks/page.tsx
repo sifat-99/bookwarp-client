@@ -6,7 +6,7 @@ import BookCard from "../Books/BookCard";
 const Page = () => {
     const [allBooks, setAllBooks] = useState([]);
     useEffect(()=>{
-        fetch('allBooks.json')
+        fetch('https://bookwarp-server.vercel.app/allBooks')
         .then(res => res.json())
         .then(data => setAllBooks(data))
     },[])
