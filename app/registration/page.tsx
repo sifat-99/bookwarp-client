@@ -6,6 +6,8 @@ import Link from "next/link";
 import { FcGoogle  } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/config/firebase";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -30,10 +32,10 @@ const Login = () => {
     blur: "12.5px",
   };
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("login", { email, password });
-    // You can add your login logic here
+    createUserWithEmailAndPassword(auth, email, password);
   };
 
   return (
@@ -44,7 +46,7 @@ const Login = () => {
           className="card shrink-0 w-full max-w-sm shadow-2xl"
           style={myStyle}
         >
-          <form className="card-body w-96" onSubmit={handleLogin}>
+          <form className="card-body w-96" onSubmit={handleRegistration}>
             <div className="form-control">
               <label className="flex items-center justify-center">
                 <span className="label-text text-white text-4xl font-bold underline mb-8">
