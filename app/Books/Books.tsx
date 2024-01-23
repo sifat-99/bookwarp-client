@@ -6,7 +6,7 @@ import Link from "next/link";
 const Books = () => {
     const [allBooks, setAllBooks] = useState([]);
     useEffect(()=>{
-        fetch('allBooks.json')
+        fetch('https://bookwarp-server.vercel.app/allBooks')
         .then(res => res.json())
         .then(data => setAllBooks(data))
     },[])
