@@ -100,21 +100,21 @@ export default function navbar() {
               tabIndex={0}
               className="mt-32 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-box w-64"
             >
-              <li>
-                <p className="text-wrap">{session.data?.user?.email}</p>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center">
+                <p className="text-wrap">{session.data?.user?.name}</p>
               </li>
-              <li>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
                 <Link href={"/profile"} className="justify-between">
                   Profile
                 </Link>
               </li>
-              <li>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
                 <Link href={"/dashboard"} className="justify-between">
                   Dashboard
                 </Link>
               </li>
-              <li>
-                <button onClick={handleSignOut} className="justify-between">Logout</button>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
+                <button onClick={handleSignOut} className="justify-between ">Logout</button>
               </li>
             </ul>
           </div>
