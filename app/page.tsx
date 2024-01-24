@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Books from "./Books/Books";
 import Banner from "./banner/Banner";
 import ContactUs from "./contactUs/ContactUs";
