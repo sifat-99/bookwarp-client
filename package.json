@@ -13,11 +13,8 @@
     "@phosphor-icons/react": "^2.0.15",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.1.0",
-<<<<<<< HEAD
     "axios": "^1.6.5",
-=======
     "firebase": "^10.7.2",
->>>>>>> origin/development
     "lottie-react": "^2.4.0",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
