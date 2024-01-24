@@ -16,11 +16,6 @@ const ContactUs = () => {
       showConfirmButton: false,
       timer: 1500
     })
-    .then(data => {
-      if(data){
-
-      }
-    })
     return <p className='text-3xl text-center bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] flex items-center justify-center text-white font-semibold rounded-lg lg:m-0 m-5 h-[300px]'>Thanks for contacting Us</p>
 }
     return (
