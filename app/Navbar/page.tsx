@@ -13,6 +13,14 @@ export default function navbar() {
       signOut();
     }
 
+    const fullName = session?.data?.user?.name;
+
+    let lastName = "";
+    if (fullName) {
+        const nameParts = fullName.split(" ");
+        lastName = nameParts[nameParts.length - 1];
+    }
+
 
   const links = (
     <>
@@ -69,10 +77,14 @@ export default function navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-4">
+        <div>
         {
           session.data?.user?.email ? (
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end  flex justify-center items-center gap-2">
+              <div>
+          <p>{lastName}</p>
+        </div>
           <div
             tabIndex={0}
             role="button"
@@ -121,12 +133,13 @@ export default function navbar() {
         </div>
           ) : (
             <Link href="/login">
-              <button className="btn btn-circle btn-lg border-none text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
+              <button className="btn btn-circle btn-lg border text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
                 Login
               </button>
             </Link>
           )
         }
+        </div>
       </div>
     </div>
   );
