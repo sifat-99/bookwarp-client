@@ -8,6 +8,7 @@ import { FaFacebook } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/config/firebase";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -37,6 +38,21 @@ const Login = () => {
     console.log("login", { email, password });
     createUserWithEmailAndPassword(auth, email, password);
   };
+
+
+  const handleGoogleLogin = () => {
+    console.log("google login");
+    signIn("google", { callbackUrl: "/" });
+
+};
+
+
+const handleGithubLogin = () => {
+  console.log("github login");
+  signIn("github", { callbackUrl: "/" });
+}
+
+
 
   return (
     <div className="hero">
@@ -139,13 +155,13 @@ const Login = () => {
                   Or login with
                 </label>
 
-                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 ">
+                <button onClick={handleGoogleLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 ">
                   <FcGoogle />
                 </button>
                 <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
                   <FaFacebook />
                 </button>
-                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+                <button onClick={handleGithubLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
                   <LuGithub />
                 </button>
                 </div>
