@@ -12,7 +12,7 @@ const Books = () => {
     },[])
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 px-3 lg:grid-cols-4 gap-5 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 px-3 lg:grid-cols-4 gap-5 mt-10 ">
                 {
                    allBooks?.slice(0, 4)?.map((books: any) => <BookCard key={books?.id} books={books}/>)
                 }

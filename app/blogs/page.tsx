@@ -11,12 +11,12 @@ const Blogs = () => {
     },[])
     return (
         <section>
-            <div className='container mx-auto py-5'>
+            <div className='container mx-auto py-5 text-black dark:text-white'>
                 <h1 className='text-center text-3xl font-bold my-8'>Our Latest blog</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 px-3'>
                     {
                         allBlogs.map((blog:any) => <>
-                            <div className="card card-compact bg-base-100 shadow-xl">
+                            <div className="card card-compact bg-white dark:bg-black border shadow-xl">
                                 <figure><img src={blog.cover} alt='book'/></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{blog.title}</h2>
