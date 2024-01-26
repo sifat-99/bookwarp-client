@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const footer = () => {
@@ -11,7 +12,7 @@ const footer = () => {
             </div>
             <div className="flex flex-col md:flex-row gap-2 md:gap-3 items-center">
               <p className="text-white text-lg">Ready to get started?</p>
-              <button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">Exchange</button>
+              <Link href={'/exchange'}><button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">Exchange</button></Link>
             </div>
           </div>
           <hr/>
