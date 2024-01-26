@@ -28,7 +28,7 @@ const Page = () => {
   };
   return (
     <div>
-      <h1 className="font-bold text-3xl text-center mt-14 mb-2">All Books</h1>
+      <h1 className="font-bold text-3xl text-center mt-14 mb-2 text-black dark:text-white">All Books</h1>
       <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
         {/* <!-- Form --> */}
         <form onSubmit={handleSearch}>
@@ -59,7 +59,7 @@ const Page = () => {
         </form>
         {/* <!-- End Form --> */}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 px-3 lg:grid-cols-4 gap-5 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 px-3 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-10">
         {allBooks?.map((books: any) => (
           <BookCard key={books?.id} books={books} />
         ))}
