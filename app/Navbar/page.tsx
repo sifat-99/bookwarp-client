@@ -48,7 +48,7 @@ export default function navbar() {
   );
 
   return (
-    <div  className="navbar z-20 bg-white  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white md:text-white top-0 rounded-b-lg dark:border-2 border-white">
+    <div className="navbar z-20 bg-transparent  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky text-black dark:text-white md:text-white top-0 rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -83,7 +83,9 @@ export default function navbar() {
           {session.data?.user?.email ? (
             <div className="dropdown dropdown-end  flex justify-center items-center gap-2">
               <div className="flex items-center justify-center gap-2">
-                <ThemeSwitch />
+                <p className="btn bg-transparent hover:bg-transparent border-none rounded-full text-4xl text-black dark:text-white cursor-pointer">
+                  <ThemeSwitch />
+                </p>
                 <p>{lastName}</p>
               </div>
               <div
@@ -140,13 +142,13 @@ export default function navbar() {
           ) : (
             <div className="flex items-center justify-center gap-8">
               <p className="btn bg-transparent hover:bg-transparent border-none rounded-full text-4xl text-black dark:text-white cursor-pointer">
-              <ThemeSwitch  />
+                <ThemeSwitch />
               </p>
               <Link title="Login" href="/login">
-              <button className="btn  btn-lg border text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full dark:btn-outline dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] dark:text-white ">
-                Login
-              </button>
-            </Link>
+                <button className="btn btn-circle btn-lg border text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
+                  Login
+                </button>
+              </Link>
             </div>
           )}
         </div>
