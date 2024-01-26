@@ -29,7 +29,7 @@ export default function RootLayout({
         />
         <title>BookWarp</title>
       </head>
-      <body className="container mx-auto bg-white dark:bg-black">
+      <body className="px-4 md:px-12 lg:px-32 mx-auto bg-white dark:bg-black">
         <Providers>
           <SessionProvider>
             <Navbar />
