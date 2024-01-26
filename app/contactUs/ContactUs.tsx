@@ -32,14 +32,14 @@ const ContactUs = () => {
                   <form className="card-body" onSubmit={handleSubmit}>
                     <h1 className="font-semibold text-white mb-3">Contact US</h1>
                     <div className="form-control">
-                      <input type="text" placeholder="Your Name" name="user_name" className="input input-bordered" required />
+                      <input type="text" placeholder="Your Name" name="user_name" className="input input-bordered text-white" required />
                     </div>
                     <div className="form-control">
-                      <input type="email" placeholder="Your E-mail" id='email' name="email" className="input input-bordered" required />
+                      <input type="email" placeholder="Your E-mail" id='email' name="email" className="input input-bordered text-white" required />
                       <ValidationError prefix="Email" field="email" errors={state.errors}/>
                     </div>
                     <div className="form-control">
-                    <textarea placeholder="Your Message" name="message" id='message' className="input input-bordered pt-3 h-20" required />
+                    <textarea placeholder="Your Message" name="message" id='message' className="input input-bordered text-white pt-3 h-20" required />
                     <ValidationError  prefix="Message" field="message" errors={state.errors} />
                     </div>
                     <div className="form-control mt-6">
