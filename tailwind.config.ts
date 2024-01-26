@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {},
   },
+  darkMode: 'class',
   plugins: [require("daisyui")],
 }
 export default config
