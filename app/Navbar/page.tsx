@@ -113,22 +113,22 @@ export default function navbar() {
 
                 <ul
                   tabIndex={0}
-                  className="mt-32 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-box w-64"
+                  className=" mt-52 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-box w-64 dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white"
                 >
-                  <li className="border rounded-lg mt-2 flex items-center justify-center text-center">
+                  <li className=" rounded-lg mt-2 flex items-center justify-center text-center text-white">
                     <p className="text-wrap">{session.data?.user?.name}</p>
                   </li>
-                  <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
-                    <Link href={"/profile"} className="justify-between">
+                  <li className="border rounded-lg mt-2 flex items-center justify-center text-center text-white hover:bg-black dark:hover:bg-white dark:hover:text-black">
+                    <Link href={"/dashboard/profile"} className="justify-between">
                       Profile
                     </Link>
                   </li>
-                  <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
+                  <li className="border rounded-lg mt-2 flex items-center justify-center text-white text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
                     <Link href={"/dashboard"} className="justify-between">
                       Dashboard
                     </Link>
                   </li>
-                  <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
+                  <li className="border rounded-lg mt-2 flex items-center text-white justify-center text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
                     <button
                       onClick={handleSignOut}
                       className="justify-between "

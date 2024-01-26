@@ -43,7 +43,7 @@ const Page = () => {
   return (
     <>
       <form
-        className="py-10  lg:w-3/4 md:mx-4 lg:mx-auto mx-auto border rounded-lg md:px-8 lg:px-20 my-20 dark:text-white"
+        className="py-10  lg:w-3/4 md:mx-4 lg:mx-auto mx-auto border rounded-lg md:px-8 lg:px-20 my-20 text-black dark:text-white"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-3xl text-center py-4 font-semibold">
@@ -53,14 +53,14 @@ const Page = () => {
           {/* category */}
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Book Name</span>
+              <span className="label-text text-black dark:text-white">Book Name</span>
             </label>
             <input
               type="text"
               placeholder="book name"
               {...register("title", { required: true })}
               required
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
           </div>
 
@@ -69,12 +69,12 @@ const Page = () => {
           {/* catagories */}
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Category*</span>
+              <span className="label-text text-black dark:text-white">Category*</span>
             </label>
             <select
               defaultValue="default"
               {...register("category", { required: true })}
-              className="select select-bordered w-full"
+              className="select select-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             >
               <option defaultValue="">Select Category</option>
               <option value="Fantasy">Fantasy</option>
@@ -92,28 +92,28 @@ const Page = () => {
           {/* category */}
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Writer*</span>
+              <span className="label-text text-black dark:text-white">Writer*</span>
             </label>
             <input
               type="text"
               placeholder="writer"
               {...register("writer", { required: true })}
               required
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
           </div>
 
           {/* price */}
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Email</span>
+              <span className="label-text text-black dark:text-white">Email</span>
             </label>
             <input
               type="text"
               placeholder="email" value={userEmail || ""} 
               {...register("email", { required: true })}
               required
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
           </div>
         </div>
@@ -122,42 +122,42 @@ const Page = () => {
 
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Price*</span>
+              <span className="label-text text-black dark:text-white">Price*</span>
             </label>
             <input
               type="number"
               placeholder="price"
               {...register("price", { required: true })}
               required
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
           </div>
 
           {/* price */}
           <div className="form-control w-full my-3">
             <label className="label">
-              <span className="label-text dark:text-white">Description</span>
+              <span className="label-text text-black dark:text-white">Description</span>
             </label>
             <input
               type="text"
               placeholder="description"
               {...register("description", { required: true })}
               required
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
           </div>
         </div>
 
-        <div className="form-control w-full my-3">
+        <div className="form-control w-full my-3 ">
           {/* { required: true } */}
           <input
             {...register("avatar")}
             type="file"
-            className="file-input w-full max-w-xs"
+            className="file-input w-full max-w-xs bg-white  dark:bg-black text-black dark:text-white"
           />
         </div>
 
-        <button className="btn">Exchange</button>
+        <button className="btn bg-black text-white dark:bg-white dark:text-black">Exchange</button>
       </form>
     </>
   );
