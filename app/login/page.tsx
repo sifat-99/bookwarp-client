@@ -12,12 +12,6 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 const Login = () => {
-
-
-
-
-
-
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,6 +41,18 @@ const Login = () => {
       signIn("google", { callbackUrl: "/" });
 
   };
+
+
+  const handleGithubLogin = () => {
+    console.log("github login");
+    signIn("github", { callbackUrl: "/" });
+  }
+
+  const handleFacebookLogin = () => {
+    console.log("facebook login");
+    signIn("facebook", { callbackUrl: "/" });
+  }
+
 
   return (
     <div className="hero mt-12">
@@ -133,10 +139,10 @@ const Login = () => {
             >
               <FcGoogle />
             </button>
-            <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+            <button onClick={handleFacebookLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
               <FaFacebook />
             </button>
-            <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+            <button onClick={handleGithubLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
               <LuGithub />
             </button>
           </div>

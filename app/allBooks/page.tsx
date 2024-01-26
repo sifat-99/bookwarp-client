@@ -12,7 +12,7 @@ const Page = () => {
 
 
 // Search Function by dev-shorif
-  const handleSearch = (e) => {
+  const handleSearch = (e:any) => {
     e.preventDefault();
     axios
       .get(

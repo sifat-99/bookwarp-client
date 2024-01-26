@@ -13,6 +13,14 @@ export default function navbar() {
       signOut();
     }
 
+    const fullName = session?.data?.user?.name;
+
+    let lastName = "";
+    if (fullName) {
+        const nameParts = fullName.split(" ");
+        lastName = nameParts[nameParts.length - 1];
+    }
+
 
   const links = (
     <>
@@ -69,10 +77,14 @@ export default function navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-4">
+        <div>
         {
           session.data?.user?.email ? (
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end  flex justify-center items-center gap-2">
+              <div>
+          <p>{lastName}</p>
+        </div>
           <div
             tabIndex={0}
             role="button"
@@ -100,33 +112,34 @@ export default function navbar() {
               tabIndex={0}
               className="mt-32 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-box w-64"
             >
-              <li>
-                <p className="text-wrap">{session.data?.user?.email}</p>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center">
+                <p className="text-wrap">{session.data?.user?.name}</p>
               </li>
-              <li>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
                 <Link href={"/profile"} className="justify-between">
                   Profile
                 </Link>
               </li>
-              <li>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
                 <Link href={"/dashboard"} className="justify-between">
                   Dashboard
                 </Link>
               </li>
-              <li>
-                <button onClick={handleSignOut} className="justify-between">Logout</button>
+              <li className="border rounded-lg mt-2 flex items-center justify-center text-center hover:bg-black">
+                <button onClick={handleSignOut} className="justify-between ">Logout</button>
               </li>
             </ul>
           </div>
         </div>
           ) : (
             <Link href="/login">
-              <button className="btn btn-circle btn-lg border-none text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
+              <button className="btn btn-circle btn-lg border text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
                 Login
               </button>
             </Link>
           )
         }
+        </div>
       </div>
     </div>
   );
