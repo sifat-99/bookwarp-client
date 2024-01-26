@@ -19,7 +19,7 @@ const BookCard = (props: any) => {
             Swal.fire({
               position: "center",
               icon: "success",
-              title: "Successfully sent message",
+              title: "Successfully Added to your Bookmark",
               showConfirmButton: false,
               timer: 1500,
             });
