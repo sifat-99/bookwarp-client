@@ -30,7 +30,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
+    // console.log(container);
   };
 
   const options: ISourceOptions = useMemo(

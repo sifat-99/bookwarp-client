@@ -5,6 +5,7 @@ import Footer from "./footer/Footer";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import SessionProvider from "./SessionProvider";
+import { Providers } from "./provider";
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -28,13 +29,15 @@ export default function RootLayout({
         />
         <title>BookWarp</title>
       </head>
-      <body className="container mx-auto">
-        <SessionProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </SessionProvider>
+      <body className="container mx-auto bg-white dark:bg-black">
+        <Providers>
+          <SessionProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+          </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
