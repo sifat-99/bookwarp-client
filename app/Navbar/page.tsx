@@ -40,15 +40,15 @@ export default function navbar() {
         </Link>
       </li>
       <li>
-        <Link className="rounded-none" href="#">
-          Test
+        <Link className="rounded-none" href="/bookmark">
+          Bookmarks
         </Link>
       </li>
     </>
   );
 
   return (
-    <div  className="navbar z-20 bg-white  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white md:text-white top-0 rounded-b-lg dark:border-2 border-white">
+    <div className="navbar z-20 bg-white  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white md:text-white top-0 rounded-b-lg dark:border-2 border-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,7 +71,7 @@ export default function navbar() {
             />
           </Link>
           <Link href="/">
-            <h1 className="text-lg md:text-3xl font-bold ml-2">BookWarp</h1>
+            <h1 className="text-lg md:text-3xl font-bold ml-2 hidden md:block">BookWarp</h1>
           </Link>
         </div>
       </div>
