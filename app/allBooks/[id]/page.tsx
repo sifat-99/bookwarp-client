@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from 'react';
 
 const Detail = (props:any) => {
-    // const { _id ,cover, title, writer, price, description} = props;
     const [book, setBook] = useState<any>([]);
-    const idURL = `http://localhost:4000/allBooks/${props.params.id}`
+    const idURL = `https://bookwarp-server.vercel.app/allBooks/${props.params.id}`
     useEffect(()=>{
         fetch(idURL)
         .then(res => res.json())
