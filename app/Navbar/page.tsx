@@ -46,8 +46,9 @@ export default function navbar() {
       </li>
     </>
   );
+
   return (
-    <div className="navbar z-20 bg-transparent md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky text-black md:text-white top-0 rounded-b-lg">
+    <div  className="navbar z-20 bg-transparent  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky text-black dark:text-white md:text-white top-0 rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +56,7 @@ export default function navbar() {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-black rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white md:bg-base-100 text-black rounded-box w-52"
           >
             {links}
           </ul>
@@ -138,10 +139,10 @@ export default function navbar() {
             </div>
           ) : (
             <div className="flex items-center justify-center gap-8">
-              <p className="text-4xl text-black dark:text-white cursor-pointer">
+              <p className="btn bg-transparent hover:bg-transparent border-none rounded-full text-4xl text-black dark:text-white cursor-pointer">
               <ThemeSwitch  />
               </p>
-              <Link href="/login">
+              <Link title="Login" href="/login">
               <button className="btn btn-circle btn-lg border text-white bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-full">
                 Login
               </button>
