@@ -18,7 +18,7 @@ const Page = () => {
   //   formState: { errors },
   // } = useForm<Inputs>()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data:any) => {
     const email = data.email;
     const password = data.password;
     const name = data.name;
