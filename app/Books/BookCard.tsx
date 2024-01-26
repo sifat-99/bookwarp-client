@@ -1,8 +1,31 @@
+import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 const BookCard = (props: any) => {
-  const { cover, title, writer, price } = props.books;
+  const router = useRouter();
+
+  const {cover, title, writer, price} = props.books;
+  const userInfo=useSession();
+ const email=userInfo?.data?.user?.email;
+
+  const heandelBookmark=(cover: any, title: any, writer: any, price: any)=>{
+      const bookMark ={cover, title, writer, price, email};
+      if(email){
+        axios.post("https://bookwarp-server.vercel.app/bookmark", bookMark)
+        .then(res=>{
+          if(res.data.insertedId){
+            toast('Bookmark add successfully');
+          }
+        })
+      }else{
+        router.push('/login');
+      }
+     
+  }
   return (
     <div>
       <div className="card h-[500px] card-compact bg-slate-200 dark:bg-base-100 shadow-xl p-2">
@@ -30,6 +53,7 @@ const BookCard = (props: any) => {
             <button className="btn btn-outline text-black dark:text-white">
               Buy Now
             </button>
+            <button onClick={()=>heandelBookmark(cover, title, writer, price)} className="btn btn-outline">Bookmark</button>
           </div>
         </div>
       </div>
