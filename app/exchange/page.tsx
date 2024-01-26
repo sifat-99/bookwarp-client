@@ -8,8 +8,16 @@ type Inputs = {
 };
 const Page = () => {
   const session = useSession();
-  console.log(session.data?.user?.email);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const userEmail = session?.data?.user?.email;
+  type Inputs = {
+    title: string;
+    category: string;
+    writer: string;
+    email: string;
+    price: number;
+    description: string;
+    avatar?: FileList;
+  };  
   const { register, handleSubmit, reset } = useForm<Inputs>();
   // const {
   //   register,
@@ -102,8 +110,7 @@ const Page = () => {
             </label>
             <input
               type="text"
-              placeholder="email"
-              value={session.data?.user?.email}
+              placeholder="email" value={userEmail || ""} 
               {...register("email", { required: true })}
               required
               className="input input-bordered w-full"
