@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { BsBookmarkStarFill } from "react-icons/bs";
 
 const BookCard = (props: any) => {
-  const { cover, title, writer, price } = props.books;
+  const { _id ,cover, title, writer, price} = props.books;
   const userInfo = useSession();
   const email = userInfo?.data?.user?.email;
 
@@ -51,9 +51,7 @@ const BookCard = (props: any) => {
             <span className="font-semibold">Price:</span> {price}$
           </p>
           <div className="card-actions flex flex-wrap justify-center">
-            <button className="btn btn-outline text-black dark:text-white">
-              Details
-            </button>
+          <Link href={`allBooks/${_id}`}><button className="btn btn-outline text-black dark:text-white">Details</button></Link>
             <Link
               href={"/exchange"}
               className="btn btn-outline text-black dark:text-white"
