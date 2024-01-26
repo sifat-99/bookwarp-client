@@ -4,6 +4,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import msgAnimation from './mail_animation.json'
 import { FaPhone } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 
 const ContactUs = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -16,11 +17,13 @@ const ContactUs = () => {
       showConfirmButton: false,
       timer: 1500
     })
-    return <p className='text-3xl text-center bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] flex items-center justify-center text-white font-semibold rounded-lg lg:m-0 m-5 h-[300px]'>Thanks for contacting Us</p>
+    setTimeout(function() {
+      window.location.reload();
+  }, 1500)
 }
     return (
-        <div className="px-5 lg:px-0 my-10">
-            <div className="hero lg:h-[550px] bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-lg md:mb-10">
+        <div className="px-5 lg:px-0 my-10 ">
+            <div className="hero lg:h-[550px] dark:border-2 bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] dark:from-[#0d0d0d] to dark:bg-[#010101] text-black pb-6 rounded-lg md:mb-10">
               <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left ">
                   <Lottie className="z-0 md:h-[400px] lg:h-[600px]" animationData={msgAnimation}/>
