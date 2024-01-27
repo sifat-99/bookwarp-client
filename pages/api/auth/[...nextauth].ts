@@ -28,8 +28,8 @@ export const authOptions = {
         }),
         GoogleProvider({
             name: 'Google',
-            clientId: '1051544115028-gn45vkok60a7ejfdiosm2dbd8s2fk3hi.apps.googleusercontent.com',
-            clientSecret: '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',
+            clientId: process.env.GOOGLE_ID as string,
+            clientSecret: process.env.GOOGLE_SECRET as string,
         }),
         GitHubProvider({
             name: 'GitHub',

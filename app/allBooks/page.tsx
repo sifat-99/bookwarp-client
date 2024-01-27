@@ -20,10 +20,10 @@ const Page = () => {
       )
       .then(function (response) {
         setAllBooks(response.data);
-        console.log(response);
+        // console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
   };
   return (
