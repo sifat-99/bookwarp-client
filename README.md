@@ -23,7 +23,8 @@ Buying books should be a hassle-free process. BookWarp offers a seamless purchas
 BookWarp is built using a combination of cutting-edge technologies, including:
 
 - Next.js for server-side rendering and static site generation
-- HTML5 and CSS3 for responsive and visually appealing web design
+- tailwindcss for styling and responsive design
+- daisyUI for custom components and utility classes
 - JavaScript for interactive and dynamic user experiences
 - React.js for building a modular and efficient front-end
 - Node.js for server-side scripting and handling API requests
@@ -43,4 +44,4 @@ BookWarp is built using a combination of cutting-edge technologies, including:
 - sweetalert2 for displaying alerts and notifications
 
 
-Join us on BookWarp and embark on a journey of literary exploration. Happy reading!
+### Join us on BookWarp and embark on a journey of literary exploration. Happy reading!
