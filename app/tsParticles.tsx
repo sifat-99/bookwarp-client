@@ -9,10 +9,18 @@ import {
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import { useTheme } from "next-themes";
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
  const App = () => {
   const [init, setInit] = useState(false);
+
+
+  const { theme } = useTheme();
+
+let backgroundColorClass: string = theme === 'light' ? "#34c1ce" : "#000";
+let particleColorClass: string = theme === 'light' ? "#000" : "#fff";
+
 
   // this should be run only once per application lifetime
   useEffect(() => {
@@ -37,7 +45,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
     () => ({
       background: {
         color: {
-          value: "#34c1ce",
+          value: `${backgroundColorClass}`,
         },
       },
       fpsLimit: 120,
@@ -54,7 +62,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
         },
         modes: {
           push: {
-            quantity: 12,
+            quantity: 20,
           },
           repulse: {
             distance: 200,
@@ -64,13 +72,13 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
       },
       particles: {
         color: {
-          value: "#000",
+          value: particleColorClass,
         },
         links: {
-          color: "#000",
+          color: particleColorClass,
           distance: 150,
           enable: true,
-          opacity: 0.5,
+          opacity: 1,
           width: 1,
         },
         move: {
@@ -96,12 +104,12 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 5 },
+          value: { min: 1, max: 3 },
         },
       },
       detectRetina: true,
     }),
-    []
+    [backgroundColorClass,particleColorClass]
   );
 
   if (init) {
