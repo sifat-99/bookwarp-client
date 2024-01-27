@@ -31,7 +31,7 @@ const Page = () => {
     const password = data.password;
     const name = data.name;
 
-    console.log(data, email, name);
+    // console.log(data, email, name);
     Swal.fire({
       position: "center",
       icon: "success",

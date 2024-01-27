@@ -26,7 +26,7 @@ const Login = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    console.log("login", { email, password });
+    // console.log("login", { email, password });
 
     signIn("credentials", {
       email,
@@ -37,19 +37,19 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-      console.log("google login");
+      // console.log("google login");
       signIn("google", { callbackUrl: "/" });
 
   };
 
 
   const handleGithubLogin = () => {
-    console.log("github login");
+    // console.log("github login");
     signIn("github", { callbackUrl: "/" });
   }
 
   const handleFacebookLogin = () => {
-    console.log("facebook login");
+    // console.log("facebook login");
     signIn("facebook", { callbackUrl: "/" });
   }
 
