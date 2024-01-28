@@ -1,14 +1,41 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaList } from "react-icons/fa";
 import ThemeSwitch from "./ThemeSwitch";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
   console.log(session);
+
+    useEffect(() => {
+
+      if(session.data?.user?.email)
+      {
+        console.log(session)
+        axios.post("https://bookwarp-server.vercel.app/users",{
+          email: session?.data?.user?.email,
+          name: session?.data?.user?.name,
+          image: session?.data?.user?.image,
+          role: "user",
+          address: {
+            division: "",
+            district: "",
+          },
+          bloodGroup: "",
+          phone: 123,
+        })
+      }
+
+    }
+    , [session]);
+
+
 
   const handleSignOut = () => {
     signOut();
