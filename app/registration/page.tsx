@@ -6,11 +6,14 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/config/firebase";
 import { signIn } from "next-auth/react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -48,12 +51,8 @@ const Login = () => {
     } else {
       setValid("Password is valid");
     }
-    // console.log(pass);
     setValidPassword(pass);
   };
-
-  // console.log(image);
-
   const myStyle = {
     background: "rgba(88, 130, 193, 0.28)",
     fontSize: "16px",
@@ -64,18 +63,74 @@ const Login = () => {
 
   const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log("login", { email, validPassword });
-    createUserWithEmailAndPassword(auth, email, validPassword);
+    createUserWithEmailAndPassword(auth, email, validPassword)
+    .then((user)=>{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registration Successful, Login to continue',
+        showConfirmButton: true,
+        timer: 1500
+      }).then(()=>{
+        axios.post("https://bookwarp-server.vercel.app/users",{
+          email: email,
+          name: name,
+          image: image,
+          role: "user",
+          address: {
+            division: "",
+            district: "",
+          },
+          bloodGroup: "",
+          phone: 123,
+        }).then((res)=>{
+          console.log(res.data);
+        }
+        )
+        window.location.href = "/login";
+      }
+      )
+      updateProfile(user.user, {
+        displayName: name,
+        photoURL: image,
+        })
+    })
   };
 
   const handleGoogleLogin = () => {
     // console.log("google login");
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", { callbackUrl: "/" })
+    .then((res) => {
+      Swal.fire({
+         icon: "success",
+         title: "Login Successful",
+         text: "You are logged in successfully",
+         timer: 2000,
+         showConfirmButton: false,
+       }).then(()=>{
+         window.location.href = `/`;
+       }
+       )
+     }
+     )
   };
 
   const handleGithubLogin = () => {
     // console.log("github login");
-    signIn("github", { callbackUrl: "/" });
+    signIn("github", { callbackUrl: "/" })
+    .then((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully",
+        timer: 2000,
+        showConfirmButton: false,
+      }).then(()=>{
+        window.location.href = `/`;
+      }
+      )
+    }
+    )
   };
 
   return (
@@ -100,7 +155,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                id="email"
+                id="email1"
                 placeholder="Your name"
                 className="input input-bordered bg-white text-black"
                 value={name}

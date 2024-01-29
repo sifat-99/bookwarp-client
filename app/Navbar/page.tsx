@@ -146,19 +146,19 @@ export default function navbar() {
                     <p className="text-wrap">{session.data?.user?.name}</p>
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center justify-center text-center text-white hover:bg-black dark:hover:bg-white dark:hover:text-black">
-                    <Link href={"/dashboard/profile"} className="justify-between">
+                    <Link href={"/dashboard/profile"} className="justify-center w-full text-center flex">
                       Profile
                     </Link>
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center justify-center text-white text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
-                    <Link href={"/dashboard"} className="justify-between">
+                    <Link href={"/dashboard"} className="justify-center w-full text-center flex">
                       Dashboard
                     </Link>
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center text-white justify-center text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
                     <button
                       onClick={handleSignOut}
-                      className="justify-between "
+                      className="justify-center w-full text-center flex"
                     >
                       Logout
                     </button>

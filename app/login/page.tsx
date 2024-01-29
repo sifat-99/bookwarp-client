@@ -10,11 +10,16 @@ import { FaHandPointDown } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const location = window?.location?.href || '/';
+
+  // const previousLocation = location?.split("/")[3];
+  // console.log(previousLocation)
 
   const myStyle = {
     background: "rgba(88, 130, 193, 0.28)",
@@ -33,24 +38,76 @@ const Login = () => {
       password,
       redirect: true,
       callbackUrl: "/",
-    });
+    })
+    .then((res) => {
+       Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You are logged in successfully",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(()=>{
+          // window.location.href = `/${previousLocation}`;
+        }
+        )
+      }
+      )
   };
 
   const handleGoogleLogin = () => {
       // console.log("google login");
-      signIn("google", { callbackUrl: "/" });
+      signIn("google", { callbackUrl: "/" })
+      .then((res) => {
+       Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You are logged in successfully",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(()=>{
+          // window.location.href = `/${previousLocation}`;
+        }
+        )
+      }
+      )
 
   };
 
 
   const handleGithubLogin = () => {
     // console.log("github login");
-    signIn("github", { callbackUrl: "/" });
+    signIn("github", { callbackUrl: "/" })
+    .then((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully",
+        timer: 2000,
+        showConfirmButton: false,
+      }).then(()=>{
+        // window.location.href = `/${previousLocation}`;
+      }
+      )
+    }
+    )
   }
 
   const handleFacebookLogin = () => {
     // console.log("facebook login");
-    signIn("facebook", { callbackUrl: "/" });
+    signIn("facebook", { callbackUrl: "/" })
+    .then((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully",
+        timer: 2000,
+        showConfirmButton: false,
+      }).then(()=>{
+        // window.location.href = `/${previousLocation}`;
+      }
+      )
+    }
+    )
   }
 
 
