@@ -41,7 +41,7 @@ const BookCard = (props: any) => {
             </h2>
             <button
               onClick={() => heandelBookmark(cover, title, writer, price)}
-              className="btn bg-transparent border-none ml-8"
+              className="btn bg-transparent border-none ml-8 absolute right-12"
             >
               <BsBookmarkStarFill className="text-xl text-yellow-500" />
             </button>
