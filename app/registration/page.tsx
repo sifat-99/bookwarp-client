@@ -87,6 +87,7 @@ const Login = () => {
           console.log(res.data);
         }
         )
+        window.location.href = "/login";
       }
       )
       updateProfile(user.user, {
@@ -107,7 +108,7 @@ const Login = () => {
          timer: 2000,
          showConfirmButton: false,
        }).then(()=>{
-         
+         window.location.href = `/`;
        }
        )
      }
@@ -125,7 +126,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        
+        window.location.href = `/`;
       }
       )
     }

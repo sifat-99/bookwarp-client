@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useContext, useState } from "react";
 import App from "../tsParticles";
 import Link from "next/link";
@@ -15,9 +16,10 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const location = window.location.href;
+  const location = window?.location?.href as string;
 
   const previousLocation = location.split("/")[3];
+  console.log(previousLocation)
 
   const myStyle = {
     background: "rgba(88, 130, 193, 0.28)",
@@ -38,18 +40,18 @@ const Login = () => {
       callbackUrl: "/",
     })
     .then((res) => {
-      Swal.fire({
-         icon: "success",
-         title: "Login Successful",
-         text: "You are logged in successfully",
-         timer: 2000,
-         showConfirmButton: false,
-       }).then(()=>{
-         
-       }
-       )
-     }
-     )
+       Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You are logged in successfully",
+          timer: 2000,
+          showConfirmButton: false,
+        }).then(()=>{
+          window.location.href = `/${previousLocation}`;
+        }
+        )
+      }
+      )
   };
 
   const handleGoogleLogin = () => {
@@ -63,7 +65,7 @@ const Login = () => {
           timer: 2000,
           showConfirmButton: false,
         }).then(()=>{
-          
+          window.location.href = `/${previousLocation}`;
         }
         )
       }
@@ -83,7 +85,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        
+        window.location.href = `/${previousLocation}`;
       }
       )
     }
@@ -101,7 +103,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        
+        window.location.href = `/${previousLocation}`;
       }
       )
     }
