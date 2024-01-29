@@ -45,7 +45,7 @@ const Login = () => {
          timer: 2000,
          showConfirmButton: false,
        }).then(()=>{
-         window.location.href = `/${previousLocation}`;
+         
        }
        )
      }
@@ -63,7 +63,7 @@ const Login = () => {
           timer: 2000,
           showConfirmButton: false,
         }).then(()=>{
-          window.location.href = `/${previousLocation}`;
+          
         }
         )
       }
@@ -83,7 +83,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        window.location.href = `/${previousLocation}`;
+        
       }
       )
     }
@@ -101,7 +101,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        window.location.href = `/${previousLocation}`;
+        
       }
       )
     }
