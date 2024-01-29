@@ -18,6 +18,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const session = useSession();
 
+  console.log(session)
+
   // const location = window?.location?.href || '/';
 
   // const previousLocation = location?.split("/")[3];
@@ -33,62 +35,132 @@ const Login = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    // console.log("login", { email, password });
-
-    signIn("credentials", {
-      email,
-      password,
-      redirect: true,
-      callbackUrl: "/",
-    })
-      .then((res) => {
-        // console.log(res);
-        loginConfirmation();
-      })
-      .catch((err) => {
-        // console.log(err);
-        Swal.fire({
-          icon: "error",
-          title: "Login Failed",
-          text: "Invalid email or password",
-          timer: 2000,
-          showConfirmButton: false,
-        });
+  
+    try {
+      // Call signIn function
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: true,
+        callbackUrl: "/",
       });
+  
+      // If signIn succeeds, show alert
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "You are logged in successfully, Redirecting to home page",
+            timer: 2000,
+            showConfirmButton: true,
+          }).then(() => {
+            window.location.href = `/`;
+          }
+          );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during login
+      console.error("Login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Login failed. Please try again."); 
+    }
   };
+  
 
-  const handleGoogleLogin = async() => {
-    // console.log("google login");
-    await signIn("google", { callbackUrl: "/" })
-     loginConfirmation();
-  };
-
-  const handleGithubLogin = () => {
-    // console.log("github login");
-    signIn("github", { callbackUrl: "/" })
-      loginConfirmation();
-
-  };
-
-  const handleFacebookLogin = () => {
-    // console.log("facebook login");
-    signIn("facebook", { callbackUrl: "/" })
-      loginConfirmation();
-  };
-
-  const loginConfirmation = () => {
-    if (session?.data?.user?.email) {
+  const handleGoogleLogin = async () => {
+    try {
+      // Call signIn function for Google login
+      await signIn("google", { callbackUrl: "/" });
+  
+      // If Google login succeeds, show alert
       Swal.fire({
         icon: "success",
         title: "Login Successful",
-        text: "You are logged in successfully",
+        text: "You are logged in successfully, Redirecting to home page",
         timer: 2000,
-        showConfirmButton: false,
+        showConfirmButton: true,
       }).then(() => {
         window.location.href = `/`;
-      });
+      }
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
     }
   };
+  
+
+  const handleGithubLogin = async() => {
+    // console.log("github login");
+  
+    try {
+      // Call signIn function for GitHub login
+      await signIn("github", { callbackUrl: "/" })
+  
+      // If Google login succeeds, show alert
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully, Redirecting to home page",
+        timer: 2000,
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/`;
+      }
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
+    }
+    
+
+  };
+
+  const handleFacebookLogin = async() => {
+    // console.log("facebook login");
+   
+    try {
+      // Call signIn function for Google login
+      await signIn("facebook", { callbackUrl: "/" })
+  
+      // If Google login succeeds, show alert
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully, Redirecting to home page",
+        timer: 2000,
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/`;
+      }
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
+    }
+      
+  };
+
 
   return (
     <div className="hero mt-12">
