@@ -16,10 +16,10 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const location = window?.location?.href || '/';
+  // const location = window?.location?.href || '/';
 
-  const previousLocation = location?.split("/")[3];
-  console.log(previousLocation)
+  // const previousLocation = location?.split("/")[3];
+  // console.log(previousLocation)
 
   const myStyle = {
     background: "rgba(88, 130, 193, 0.28)",
@@ -47,7 +47,7 @@ const Login = () => {
           timer: 2000,
           showConfirmButton: false,
         }).then(()=>{
-          window.location.href = `/${previousLocation}`;
+          // window.location.href = `/${previousLocation}`;
         }
         )
       }
@@ -65,7 +65,7 @@ const Login = () => {
           timer: 2000,
           showConfirmButton: false,
         }).then(()=>{
-          window.location.href = `/${previousLocation}`;
+          // window.location.href = `/${previousLocation}`;
         }
         )
       }
@@ -85,7 +85,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        window.location.href = `/${previousLocation}`;
+        // window.location.href = `/${previousLocation}`;
       }
       )
     }
@@ -103,7 +103,7 @@ const Login = () => {
         timer: 2000,
         showConfirmButton: false,
       }).then(()=>{
-        window.location.href = `/${previousLocation}`;
+        // window.location.href = `/${previousLocation}`;
       }
       )
     }
