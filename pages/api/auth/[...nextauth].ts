@@ -37,14 +37,6 @@ export const authOptions = {
       },
     }),
     GoogleProvider({
-        profile(profile: GoogleProfile) {
-            return {
-            ...profile,
-            id: profile.id.toString(),
-            image: profile.picture,
-            role: profile.role ?? "user",
-            };
-        },
       name: "Google",
       clientId:
         "1051544115028-gn45vkok60a7ejfdiosm2dbd8s2fk3hi.apps.googleusercontent.com",
