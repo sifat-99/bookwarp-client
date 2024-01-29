@@ -43,9 +43,9 @@ const Page = () => {
       <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
         {/* <!-- Form --> */}
         <form onSubmit={handleSearch}>
-          <div className="relative z-10 flex space-x-3 bg-white border rounded shadow-lg shadow-gray-100 ">
+          <div className="relative z-10 flex space-x-3 dark:bg-gray-600 bg-white border rounded shadow-lg">
           <div className="dropdown dropdown-bottom">
-              <div tabIndex={0} role="button" className="btn m-1 bg-red-500 text-white"><FaSlidersH/>Filter</div>
+              <div tabIndex={0} role="button" className="btn m-1 bg-red-500 border-none text-white"><FaSlidersH/>Filter</div>
                 <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                   <li><button onClick={() => filterBooks("")} className="my-1">All</button></li>
                   <li><button onClick={() => filterBooks("mystery")} className="my-1">Mystery</button></li>
@@ -66,7 +66,7 @@ const Page = () => {
                 type="text"
                 name="text"
                 placeholder="Search..."
-                className="text-gray-500 h-full px-4 focus:border-0 focus:outline-none  w-full"
+                className="text-gray-500 h-full px-4 dark:rounded-br-3xl dark:rounded-tl-3xl focus:border-0 focus:outline-none  w-full"
               ></input>
             </div>
             <button
