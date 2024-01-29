@@ -6,11 +6,13 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/config/firebase";
 import { signIn } from "next-auth/react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -65,7 +67,25 @@ const Login = () => {
   const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // console.log("login", { email, validPassword });
-    createUserWithEmailAndPassword(auth, email, validPassword);
+    createUserWithEmailAndPassword(auth, email, validPassword)
+    .then((user)=>{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registration Successful, Login to continue',
+        showConfirmButton: true,
+        timer: 1500
+      }).then(()=>{
+        window.location.href = "/login";
+      }
+      )
+      updateProfile(user.user, {
+        displayName: name,
+        photoURL: image,
+        }).then((user)=>{
+        
+        })
+    })
   };
 
   const handleGoogleLogin = () => {
@@ -100,7 +120,7 @@ const Login = () => {
               </label>
               <input
                 type="text"
-                id="email"
+                id="email1"
                 placeholder="Your name"
                 className="input input-bordered bg-white text-black"
                 value={name}
