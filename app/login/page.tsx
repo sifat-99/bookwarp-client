@@ -9,13 +9,15 @@ import { LuGithub } from "react-icons/lu";
 import { FaHandPointDown } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const session = useSession();
+
   // const location = window?.location?.href || '/';
 
   // const previousLocation = location?.split("/")[3];
@@ -39,77 +41,54 @@ const Login = () => {
       redirect: true,
       callbackUrl: "/",
     })
-    .then((res) => {
-       Swal.fire({
-          icon: "success",
-          title: "Login Successful",
-          text: "You are logged in successfully",
-          timer: 2000,
-          showConfirmButton: false,
-        }).then(()=>{
-          // window.location.href = `/${previousLocation}`;
-        }
-        )
-      }
-      )
-  };
-
-  const handleGoogleLogin = () => {
-      // console.log("google login");
-      signIn("google", { callbackUrl: "/" })
       .then((res) => {
-       Swal.fire({
-          icon: "success",
-          title: "Login Successful",
-          text: "You are logged in successfully",
+        // console.log(res);
+        loginConfirmation();
+      })
+      .catch((err) => {
+        // console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Invalid email or password",
           timer: 2000,
           showConfirmButton: false,
-        }).then(()=>{
-          // window.location.href = `/${previousLocation}`;
-        }
-        )
-      }
-      )
-
+        });
+      });
   };
 
+  const handleGoogleLogin = async() => {
+    // console.log("google login");
+    await signIn("google", { callbackUrl: "/" })
+     loginConfirmation();
+  };
 
   const handleGithubLogin = () => {
     // console.log("github login");
     signIn("github", { callbackUrl: "/" })
-    .then((res) => {
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You are logged in successfully",
-        timer: 2000,
-        showConfirmButton: false,
-      }).then(()=>{
-        // window.location.href = `/${previousLocation}`;
-      }
-      )
-    }
-    )
-  }
+      loginConfirmation();
+
+  };
 
   const handleFacebookLogin = () => {
     // console.log("facebook login");
     signIn("facebook", { callbackUrl: "/" })
-    .then((res) => {
+      loginConfirmation();
+  };
+
+  const loginConfirmation = () => {
+    if (session?.data?.user?.email) {
       Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully",
         timer: 2000,
         showConfirmButton: false,
-      }).then(()=>{
-        // window.location.href = `/${previousLocation}`;
-      }
-      )
+      }).then(() => {
+        window.location.href = `/`;
+      });
     }
-    )
-  }
-
+  };
 
   return (
     <div className="hero mt-12">
@@ -196,10 +175,16 @@ const Login = () => {
             >
               <FcGoogle />
             </button>
-            <button onClick={handleFacebookLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+            <button
+              onClick={handleFacebookLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 "
+            >
               <FaFacebook />
             </button>
-            <button onClick={handleGithubLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+            <button
+              onClick={handleGithubLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 "
+            >
               <LuGithub />
             </button>
           </div>
