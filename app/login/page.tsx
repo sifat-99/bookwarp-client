@@ -16,9 +16,9 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const location = window?.location?.href as string;
+  const location = window?.location?.href || '/';
 
-  const previousLocation = location.split("/")[3];
+  const previousLocation = location?.split("/")[3];
   console.log(previousLocation)
 
   const myStyle = {
