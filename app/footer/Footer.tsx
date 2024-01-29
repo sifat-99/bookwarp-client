@@ -12,20 +12,22 @@ const footer = () => {
             </div>
             <div className="flex flex-col md:flex-row gap-2 md:gap-3 items-center">
               <p className="text-white text-lg">Ready to get started?</p>
-              <Link href={'/exchange'}><button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">Exchange</button></Link>
+              <Link href={"/exchange"}>
+                <button className="bg-white text-md font-bold md:py-2 px-4 md:px-12 rounded-lg">
+                  Exchange
+                </button>
+              </Link>
             </div>
           </div>
-          <hr/>
+          <hr />
           <div className="text-white pt-7 px-12 justify-center items-center grid grid-cols-2 md:grid-cols-4 gap-6 ">
             <div>
-              <h3 className="text-xl font-semibold pb-7">
-                Subscribe to our newsletter
-              </h3>
+              <h3 className="text-xl font-semibold pb-7">Follow Us On</h3>
               <div className="flex gap-2">
-                <FaFacebook className="text-xl"/>
-                <FaTwitter className="text-xl"/>
-                <FaLinkedin className="text-xl"/>
-                <FaInstagram className="text-xl"/>
+                <FaFacebook className="text-xl" />
+                <FaTwitter className="text-xl" />
+                <FaLinkedin className="text-xl" />
+                <FaInstagram className="text-xl" />
               </div>
             </div>
             <div>
@@ -52,7 +54,9 @@ const footer = () => {
           </div>
           <footer className="footer footer-center px-4 mt-10 text-white">
             <aside>
-              <p>Copyright © 2023 - All right reserved by Team Electro Coders</p>
+              <p>
+                Copyright © 2023 - All right reserved by Team Electro Coders
+              </p>
             </aside>
           </footer>
         </div>
