@@ -9,13 +9,17 @@ import { LuGithub } from "react-icons/lu";
 import { FaHandPointDown } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const session = useSession();
+
+  console.log(session)
+
   // const location = window?.location?.href || '/';
 
   // const previousLocation = location?.split("/")[3];
@@ -31,84 +35,131 @@ const Login = () => {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    // console.log("login", { email, password });
-
-    signIn("credentials", {
-      email,
-      password,
-      redirect: true,
-      callbackUrl: "/",
-    })
-    .then((res) => {
-       Swal.fire({
-          icon: "success",
-          title: "Login Successful",
-          text: "You are logged in successfully",
-          timer: 2000,
-          showConfirmButton: false,
-        }).then(()=>{
-          // window.location.href = `/${previousLocation}`;
-        }
-        )
-      }
-      )
+  
+    try {
+      // Call signIn function
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: true,
+        callbackUrl: "/",
+      });
+  
+      // If signIn succeeds, show alert
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "You are logged in successfully, Redirecting to home page",
+            timer: 2000,
+            showConfirmButton: true,
+          }).then(() => {
+            window.location.href = `/`;
+          }
+          );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during login
+      console.error("Login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Login failed. Please try again."); 
+    }
   };
+  
 
-  const handleGoogleLogin = () => {
-      // console.log("google login");
-      signIn("google", { callbackUrl: "/" })
-      .then((res) => {
-       Swal.fire({
-          icon: "success",
-          title: "Login Successful",
-          text: "You are logged in successfully",
-          timer: 2000,
-          showConfirmButton: false,
-        }).then(()=>{
-          // window.location.href = `/${previousLocation}`;
-        }
-        )
+  const handleGoogleLogin = async () => {
+    try {
+      // Call signIn function for Google login
+      await signIn("google", { callbackUrl: "/" });
+  
+      // If Google login succeeds, show alert
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully, Redirecting to home page",
+        timer: 2000,
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/`;
       }
-      )
-
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
+    }
   };
+  
 
-
-  const handleGithubLogin = () => {
+  const handleGithubLogin = async() => {
     // console.log("github login");
-    signIn("github", { callbackUrl: "/" })
-    .then((res) => {
+  
+    try {
+      // Call signIn function for GitHub login
+      await signIn("github", { callbackUrl: "/" })
+  
+      // If Google login succeeds, show alert
       Swal.fire({
         icon: "success",
         title: "Login Successful",
-        text: "You are logged in successfully",
+        text: "You are logged in successfully, Redirecting to home page",
         timer: 2000,
-        showConfirmButton: false,
-      }).then(()=>{
-        // window.location.href = `/${previousLocation}`;
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/`;
       }
-      )
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
     }
-    )
-  }
+    
 
-  const handleFacebookLogin = () => {
+  };
+
+  const handleFacebookLogin = async() => {
     // console.log("facebook login");
-    signIn("facebook", { callbackUrl: "/" })
-    .then((res) => {
+   
+    try {
+      // Call signIn function for Google login
+      await signIn("facebook", { callbackUrl: "/" })
+  
+      // If Google login succeeds, show alert
       Swal.fire({
         icon: "success",
         title: "Login Successful",
-        text: "You are logged in successfully",
+        text: "You are logged in successfully, Redirecting to home page",
         timer: 2000,
-        showConfirmButton: false,
-      }).then(()=>{
-        // window.location.href = `/${previousLocation}`;
+        showConfirmButton: true,
+      }).then(() => {
+        window.location.href = `/`;
       }
-      )
+      );
+  
+      // Optionally, you can also navigate to a different page after successful login
+      // window.location.href = "/dashboard"; // Example navigation
+  
+    } catch (error) {
+      // Handle any errors that occur during Google login
+      console.error("Google login error:", error);
+      // Optionally, you can show an alert for login failure as well
+      // alert("Google login failed. Please try again."); 
     }
-    )
-  }
+      
+  };
 
 
   return (
@@ -196,10 +247,16 @@ const Login = () => {
             >
               <FcGoogle />
             </button>
-            <button onClick={handleFacebookLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+            <button
+              onClick={handleFacebookLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 "
+            >
               <FaFacebook />
             </button>
-            <button onClick={handleGithubLogin} className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 ">
+            <button
+              onClick={handleGithubLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 "
+            >
               <LuGithub />
             </button>
           </div>
