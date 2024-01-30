@@ -6,7 +6,7 @@ import { auth } from "@/config/firebase";
 import GitHubProvider from "next-auth/providers/github";
 import FacebookProvider from "next-auth/providers/facebook";
 import { GithubProfile } from "next-auth/providers/github";
-import { GoogleProfile } from "next-auth/providers/google";
+import { toast } from "react-toastify";
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -29,6 +29,7 @@ export const authOptions = {
         )
           .then((userCredential) => {
             if (userCredential.user) {
+              toast.success("Login Success");
               return userCredential.user;
             }
             return null;
@@ -64,7 +65,7 @@ export const authOptions = {
   // A database is optional, but required to persist accounts in a database
   callbacks: {
     async jwt({ token, user, session, trigger }: any) {
-      console.log("jwt Callback", { token, user, session });
+      // console.log("jwt Callback", { token, user, session });
 
       if(trigger === "update" && session?.name)
 
