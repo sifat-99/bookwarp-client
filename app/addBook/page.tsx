@@ -21,6 +21,8 @@ const Page = () => {
     price: number;
     description: string;
     avatar?: FileList;
+    cover: string;
+    ratings: string
   };
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
