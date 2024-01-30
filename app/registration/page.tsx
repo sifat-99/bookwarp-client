@@ -22,7 +22,6 @@ const Login = () => {
   const [image, setImage] = useState("");
   const [valid, setValid] = useState("");
   const [validPassword, setValidPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
@@ -100,37 +99,11 @@ const Login = () => {
   const handleGoogleLogin = () => {
     // console.log("google login");
     signIn("google", { callbackUrl: "/" })
-    .then((res) => {
-      Swal.fire({
-         icon: "success",
-         title: "Login Successful",
-         text: "You are logged in successfully",
-         timer: 2000,
-         showConfirmButton: false,
-       }).then(()=>{
-         window.location.href = `/`;
-       }
-       )
-     }
-     )
   };
 
   const handleGithubLogin = () => {
     // console.log("github login");
     signIn("github", { callbackUrl: "/" })
-    .then((res) => {
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You are logged in successfully",
-        timer: 2000,
-        showConfirmButton: false,
-      }).then(()=>{
-        window.location.href = `/`;
-      }
-      )
-    }
-    )
   };
 
   return (
@@ -207,7 +180,7 @@ const Login = () => {
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type="password"
                   id="password"
                   placeholder="Your password"
                   className="input w-full input-bordered bg-white text-black"
@@ -235,7 +208,10 @@ const Login = () => {
                   Login
                 </Link>
               </p>
-              <hr className="mt-4" />
+
+            </div>
+          </form>
+          <hr className="-mt-2" />
               <div className="flex items-center justify-center gap-4">
                 <label className="label-text-alt link text-lg link-hover text-white mt-2 flex items-center gap-2">
                   Or login with
@@ -257,20 +233,9 @@ const Login = () => {
                   <LuGithub />
                 </button>
               </div>
-              <hr className="mt-2" />
-            </div>
-          </form>
-          {
-            password && <button
-            className="absolute  right-10 bottom-[253px]"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <p className="text-xl text-black"><FaEyeLowVision/> </p>: 
-            <p className="text-xl text-black"><FaEye/> </p>
-            }
-          </button>
-          }
+              <hr className="mt-2 mb-2" />
         </div>
+        
       </div>
     </div>
   );
