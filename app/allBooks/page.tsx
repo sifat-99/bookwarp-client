@@ -30,7 +30,7 @@ const Page = () => {
         `https://bookwarp-server.vercel.app/search?text=${e.target.text.value}`
       )
       .then(function (response) {
-        setAllBooks(response.data);
+        setFilteredBooks(response.data);
         console.log(response);
       })
       .catch(function (error) {
@@ -57,13 +57,13 @@ const Page = () => {
               </div>
               <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
-                  <button onClick={() => filterBooks("")} className="my-1">
+                  <button onChange={(e:any)=>filterBooks(e.target?.value)} value={"all"} className="my-1">
                     All
                   </button>
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("mystery")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"mystery"}
                     className="my-1"
                   >
                     Mystery
@@ -71,7 +71,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("fantasy")}
+                     onChange={(e:any)=>filterBooks(e.target?.value)} value={"fantasy"}
                     className="my-1"
                   >
                     Fantasy
@@ -79,7 +79,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("romance")}
+                     onChange={(e:any)=>filterBooks(e.target?.value)} value={"romance"}
                     className="my-1"
                   >
                     Romance
@@ -87,7 +87,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("science fiction")}
+                     onChange={(e:any)=>filterBooks(e.target?.value)} value={"science fiction"}
                     className="my-1"
                   >
                     Science fiction
@@ -95,7 +95,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("literary fiction")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"literary fiction"}
                     className="my-1"
                   >
                     Literary fiction
@@ -103,7 +103,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("poetry")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"poetry"}
                     className="my-1"
                   >
                     Poetry
@@ -111,20 +111,20 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("historical fiction")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"historical fiction"}
                     className="my-1"
                   >
                     Historical fiction
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => filterBooks("drama")} className="my-1">
+                  <button onChange={(e:any)=>filterBooks(e.target?.value)} value={"drama"} className="my-1">
                     Drama
                   </button>
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("thriller")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"thriller"}
                     className="my-1"
                   >
                     Thriller
@@ -132,7 +132,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("contemporary fiction")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"contemporary fiction"}
                     className="my-1"
                   >
                     Contemporary fiction
@@ -140,7 +140,7 @@ const Page = () => {
                 </li>
                 <li>
                   <button
-                    onClick={() => filterBooks("adventure")}
+                    onChange={(e:any)=>filterBooks(e.target?.value)} value={"adventure"}
                     className="my-1"
                   >
                     Adventure
