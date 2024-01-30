@@ -27,7 +27,7 @@ const UpdateProfile = (props: any) => {
 
 
 
-    console.log(userData)
+    // console.log(userData)
     
   };
 

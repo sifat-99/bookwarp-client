@@ -7,6 +7,10 @@ import { FaList } from "react-icons/fa";
 import ThemeSwitch from "./ThemeSwitch";
 import { useEffect } from "react";
 import axios from "axios";
+import { sessionStatus } from "@/utils/session";
+
+
+
 
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -17,6 +21,7 @@ export default function navbar() {
 
       if(session.data?.user?.email)
       {
+        console.log(sessionStatus)
         console.log(session)
         axios.post("https://bookwarp-server.vercel.app/users",{
           email: session?.data?.user?.email,

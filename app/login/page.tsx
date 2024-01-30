@@ -75,7 +75,7 @@ const Login = () => {
       await signIn("google", { callbackUrl: "/" });
   
       // If Google login succeeds, show alert
-      Swal.fire({
+     await Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
@@ -106,7 +106,7 @@ const Login = () => {
       await signIn("github", { callbackUrl: "/" })
   
       // If Google login succeeds, show alert
-      Swal.fire({
+    await  Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
