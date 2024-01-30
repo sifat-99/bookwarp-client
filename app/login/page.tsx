@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useContext, useState } from "react";
 import App from "../tsParticles";
 import Link from "next/link";
@@ -8,12 +7,11 @@ import { FaFacebook } from "react-icons/fa";
 import { LuGithub } from "react-icons/lu";
 import { FaHandPointDown } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
-import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const session = useSession();
@@ -46,14 +44,14 @@ const Login = () => {
       });
   
       // If signIn succeeds, show alert
-          Swal.fire({
+        await session ??  Swal.fire({
             icon: "success",
             title: "Login Successful",
             text: "You are logged in successfully, Redirecting to home page",
             timer: 2000,
             showConfirmButton: true,
           }).then(() => {
-            window.location.href = `/`;
+          window.location.href = `/`;
           }
           );
   
@@ -75,7 +73,7 @@ const Login = () => {
       await signIn("google", { callbackUrl: "/" });
   
       // If Google login succeeds, show alert
-     await Swal.fire({
+     await session ?? Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
@@ -85,7 +83,7 @@ const Login = () => {
         window.location.href = `/`;
       }
       );
-  
+
       // Optionally, you can also navigate to a different page after successful login
       // window.location.href = "/dashboard"; // Example navigation
   
@@ -106,7 +104,7 @@ const Login = () => {
       await signIn("github", { callbackUrl: "/" })
   
       // If Google login succeeds, show alert
-    await  Swal.fire({
+    await session ?? Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
@@ -132,13 +130,12 @@ const Login = () => {
 
   const handleFacebookLogin = async() => {
     // console.log("facebook login");
-   
     try {
       // Call signIn function for Google login
       await signIn("facebook", { callbackUrl: "/" })
   
       // If Google login succeeds, show alert
-      Swal.fire({
+    await session ??  Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
