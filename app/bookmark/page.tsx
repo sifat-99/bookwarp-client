@@ -1,24 +1,51 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
+import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-
-/* eslint-disable @next/next/no-img-element */
-async function getData() {
-    const userInfo= useSession();
-    const email=userInfo?.data?.user?.email;
-    const res = await fetch(`https://bookwarp-server.vercel.app/bookmark?email=${email}`)
-
-    if (!res.ok) {
-
-        throw new Error('Failed to fetch data');
-    }
-
-    return res.json();
-}
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default async function bookmark() {
-    const bookMarks = await getData();
+    const [bookMarks, setBookmarks]=useState([]);
+    const userInfo= useSession();
+    const email=userInfo?.data?.user?.email;
+    const allbookMarks =`https://bookwarp-server.vercel.app/bookmark?email=${email}`  ;
+     useEffect(()=>{
+        axios.get(allbookMarks)
+        .then(res=>{
+            setBookmarks(res.data);
+        })
+     },[allbookMarks])
+
+     const hendelDelete = (id: any) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:4000/bookmark/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Bookmark has been deleted.",
+                                icon: "success"
+                            });
+                            const remaining = bookMarks.filter((bookmark:any) => bookmark._id !== id);
+                            setBookmarks(remaining);
+
+                        }
+                    })
+
+            }
+        });
+    }
    
     return (
         <section className="mt-5">
@@ -38,6 +65,7 @@ export default async function bookmark() {
                                        <button className="btn btn-outline text-black dark:text-white">Details</button>
                                        <button className="btn btn-outline  text-black dark:text-white">Exchange</button>
                                        <button className="btn btn-outline  text-black dark:text-white">Buy Now</button>
+                                       <button onClick={()=>hendelDelete(bookmark._id)} className="btn btn-outline  text-black dark:text-white">Remove</button>
                                    </div>
                                </div>
                            </div>
