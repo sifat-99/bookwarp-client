@@ -32,7 +32,7 @@ const UpdateProfile = (props: any) => {
   const handleUpdateInfo = (e: any) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:4000/users/update/${email}`, userData)
+      .put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
       .then((res) => {
         console.log(res.data);
       })

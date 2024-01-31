@@ -13,7 +13,7 @@ function CurrentUser() {
   console.log(session.data?.user?.email)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/users/${email}`).then((res) => {
+    axios.get(`https://bookwarp-server.vercel.app/users/${email}`).then((res) => {
         setUsers(res.data);
     });
   }, [email]);

@@ -29,7 +29,7 @@ export default async function bookmark() {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:4000/bookmark/${id}`)
+                axios.delete(`https://bookwarp-server.vercel.app/bookmark/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
