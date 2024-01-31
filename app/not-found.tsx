@@ -1,9 +1,11 @@
-
+"use client"
+import Lottie from "lottie-react";
+import ErrorAnimation from "./404.json"
 
 export default function NotFound() {
   return (
     <div>
-                <h1>page not found</h1>
+      <Lottie className="w-8/12 lg:w-1/3 mx-auto" animationData={ErrorAnimation}/>
     </div>
   )
 }
