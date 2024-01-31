@@ -13,7 +13,6 @@ const UpdateProfile = (props: any) => {
   const [userName, setUserName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
-  const [allUserDb, setAllUserDb] = useState([]);
 
   const currentUser = CurrentUser();
 
@@ -28,16 +27,59 @@ const UpdateProfile = (props: any) => {
       district: district,
     },
   };
+  const imageApiKey = "bab4d97c38be2795b4cdd088d2eecbf7";
 
-  const handleUpdateInfo = (e: any) => {
-    e.preventDefault();
-    axios
-      .put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
+  
+    const handleUpdateInfo = (e: any) => {
+      e.preventDefault();
+
+      const form = new FormData(e.target);
+      const imageFile = form.get("avatar");
+
+      const data = new FormData();
+      if (imageFile) {
+        data.append("file", imageFile);
+
+        // Upload image to image hosting service
+        fetch("https://api.imagebb.com/1/upload?key=1b258f535ebc57322b29944121f24ff5", {
+          method: "POST",
+          body: data,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const imageUrl = data.data.url;
+
+            // Update user info with the new image URL
+            const updatedUserData = {
+              ...userData,
+              avatar: imageUrl,
+            };
+
+            fetch(`https://bookwarp-server.vercel.app/users/update/${email}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(updatedUserData),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+              })
+              .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
+      } else {
+        // Update user info without changing the image
+        axios
+          .put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    };
+
 
   function getOptions() {
     if (division == "Dhaka") {
@@ -191,7 +233,6 @@ const UpdateProfile = (props: any) => {
             <input
               type="file"
               name="avatar"
-              onChange={(e: any) => setAvatar(e.target?.value)}
               className="file-input file-input-bordered bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5"
               placeholder="Note"
             />
