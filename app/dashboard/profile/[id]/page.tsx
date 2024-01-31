@@ -44,7 +44,7 @@ const UpdateProfile = (props: any) => {
         fetch("https://api.imagebb.com/1/upload?key=1b258f535ebc57322b29944121f24ff5", {
           method: "POST",
           body: data,
-          mode: "no-cors"
+          mode: "same-origin"
         })
           .then((response) => response.json())
           .then((data) => {
