@@ -14,7 +14,7 @@ const update = (props: any) => {
   console.log(session.data?.user?.email)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/users/${userEmail}`).then((res) => {
+    axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
         setUsers(res.data);
     });
   }, [userEmail]);
@@ -74,7 +74,7 @@ console.log(users)
       };
       console.log(bookInfo)
 
-      axios.put(`http://localhost:4000/users/update/${userEmail}`, bookInfo).then((res:any) => {
+      axios.put(`https://bookwarp-server.vercel.app/users/update/${userEmail}`, bookInfo).then((res:any) => {
         console.log(res.data);
         if (res.modifiedCount > 0) {
           Swal.fire({
