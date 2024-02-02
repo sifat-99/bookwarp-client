@@ -1,24 +1,27 @@
 "use client";
 import AllUser from "@/app/AllUser";
-import CurrentUser from "@/app/CurrntUser";
+import CurrentUser from "@/app/CurrentUser";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const UpdateProfile = (props: any) => {
   const { id } = props.params;
+  const currentUser:any = CurrentUser();
   const session = useSession();
-  const [division, setDivision] = useState("");
-  const [district, setDistrict] = useState("");
-  const [userName, setUserName] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [bloodGroup, setBloodGroup] = useState("");
+  const [division, setDivision] = useState(currentUser?.address?.division);
+  const [district, setDistrict] = useState(currentUser?.address?.district);
+  const [userName, setUserName] = useState(currentUser?.name);
+  const [avatar, setAvatar] = useState(currentUser?.avatar);
+  const [bloodGroup, setBloodGroup] = useState(currentUser?.bloodGroup);
 
-  const currentUser = CurrentUser();
+  console.log(currentUser)
 
   const { email, name, bloodGroup: bg, phone, image } = currentUser as any;
 
   const userData = {
+    email: session?.data?.user?.email,
     name: userName,
     avatar: avatar,
     bloodGroup: bloodGroup,
@@ -30,55 +33,70 @@ const UpdateProfile = (props: any) => {
   const imageApiKey = "bab4d97c38be2795b4cdd088d2eecbf7";
 
   
-    const handleUpdateInfo = (e: any) => {
+    const handleUpdateInfo = async(e: any) => {
       e.preventDefault();
 
-      const form = new FormData(e.target);
-      const imageFile = form.get("avatar");
+      // const form = new FormData(e.target);
+      // const imageFile = form.get("avatar");
 
-      const data = new FormData();
-      if (imageFile) {
-        data.append("file", imageFile);
+      // const data = new FormData();
+      // if (imageFile) {
+      //   data.append("file", imageFile);
 
-        // Upload image to image hosting service
-        fetch("https://api.imagebb.com/1/upload?key=1b258f535ebc57322b29944121f24ff5", {
-          method: "POST",
-          body: data,
-          mode: "same-origin"
+      //   // Upload image to image hosting service
+      //   fetch("https://api.imagebb.com/1/upload?key=1b258f535ebc57322b29944121f24ff5", {
+      //     method: "POST",
+      //     body: data,
+      //     mode: "same-origin"
+      //   })
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       const imageUrl = data.data.url;
+
+      //       // Update user info with the new image URL
+      //       const updatedUserData = {
+      //         ...userData,
+      //         avatar: imageUrl,
+      //       };
+
+      //       fetch(`https://bookwarp-server.vercel.app/users/update/${email}`, {
+      //         method: "PUT",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //         body: JSON.stringify(updatedUserData),
+      //       })
+      //         .then((response) => response.json())
+      //         .then((data) => {
+      //           console.log(data);
+      //         })
+      //         .catch((error) => console.log(error));
+      //     })
+      //     .catch((error) => console.log(error));
+      // } else {
+      //   // Update user info without changing the image
+      //   axios
+      //     .put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
+      //     .then((res) => {
+      //       console.log(res.data);
+      //     })
+      //     .catch((err) => console.log(err));
+      // }
+
+      // Update user info without changing the image
+   axios.put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            Swal.fire({
+              icon: "success",
+              title: "Profile Updated Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         })
-          .then((response) => response.json())
-          .then((data) => {
-            const imageUrl = data.data.url;
-
-            // Update user info with the new image URL
-            const updatedUserData = {
-              ...userData,
-              avatar: imageUrl,
-            };
-
-            fetch(`https://bookwarp-server.vercel.app/users/update/${email}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(updatedUserData),
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                console.log(data);
-              })
-              .catch((error) => console.log(error));
-          })
-          .catch((error) => console.log(error));
-      } else {
-        // Update user info without changing the image
-        axios
-          .put(`https://bookwarp-server.vercel.app/users/update/${email}`, userData)
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => console.log(err));
-      }
+        .catch((err) => console.log(err));
     };
 
 
@@ -220,7 +238,7 @@ const UpdateProfile = (props: any) => {
               type="email"
               name="email"
               onChange={(e: any) => setUserName(e.target?.value)}
-              defaultValue={email || ""}
+              defaultValue={session.data?.user?.email || ""}
               className="bg-gray-50 border border-gray-300 disabled text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type your email"
               disabled
@@ -294,6 +312,19 @@ const UpdateProfile = (props: any) => {
               {getOptions()}
             </select>
           </div>
+          <div className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Phone Number
+            </label>
+            <input
+              type="text"
+              name="phone"
+              defaultValue={phone || ""}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Type your phone number"
+            />
+          </div>
+          <br />
           <button
             type="submit"
             className="bg-red-500 text-white  inline-flex items-center  font-medium rounded-lg text-sm px-5 py-2.5 text-center w-24  "

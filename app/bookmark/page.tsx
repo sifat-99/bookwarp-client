@@ -1,10 +1,12 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
+/* eslint-disable react-hooks/rules-of-hooks */
 import axios from "axios";
+import Lottie from "lottie-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import Loading from  "@/public/Sad.json"
 
 export default async function bookmark() {
     const [bookMarks, setBookmarks]=useState([]);
@@ -73,7 +75,10 @@ export default async function bookmark() {
                     }
                 </div>
                 :
-                <h2 className="text-center text-4xl font-bold">Your have no Bookmark</h2>
+                <div>
+                    <Lottie className="w-8/12 lg:w-1/3 mx-auto" animationData={Loading} />
+                    <h2 className="text-center text-4xl font-bold">Your have no Bookmark</h2>
+                </div>
                     
                  
                 
