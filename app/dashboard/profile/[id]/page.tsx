@@ -76,7 +76,7 @@ console.log(users)
 
       axios.put(`https://bookwarp-server.vercel.app/users/update/${userEmail}`, bookInfo).then((res:any) => {
         console.log(res.data);
-        if (res.modifiedCount > 0) {
+        if (res.data) {
           Swal.fire({
             position: "center",
             icon: "success",
