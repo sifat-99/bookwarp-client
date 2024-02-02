@@ -58,9 +58,7 @@ const BookCard = (props: any) => {
             >
               Exchange
             </Link>
-            <button className="btn btn-outline text-black dark:text-white">
-              Buy
-            </button>
+            <Link href={`allBooks/buy/${_id}`}><button className="btn btn-outline text-black dark:text-white">Buy</button></Link>
           </div>
         </div>
       </div>
