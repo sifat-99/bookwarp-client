@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import Red from  "@/public/red.json"
+import Link from "next/link";
 
 const image_hosting_api: string = `https://api.imgbb.com/1/upload?key=${"e054ffbffeb28fc199b69e426ab8669e"}`;
 
@@ -34,12 +35,11 @@ console.log(users)
     if ((users as { role: string }).role !== "admin") {
       return (
         <div className="flex justify-center flex-col items-center h-auto">
-           <Lottie className="w-8/12 lg:w-1/3 mx-auto" animationData={Red}/>
           <h1 className="text-4xl text-center font-bold text-black dark:text-white">
             You are not an admin, you can&apos;t access this page
           </h1>
           <button className="btn bg-black text-white dark:bg-white dark:text-black mt-4">
-            <a href="/">Go Back</a>
+            <Link href="/">Go Back</Link>
           </button>
         </div>
       );

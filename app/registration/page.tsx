@@ -81,7 +81,7 @@ const Login = () => {
             district: "",
           },
           bloodGroup: "",
-          phone: 123,
+          phone: "123",
         }).then((res)=>{
           console.log(res.data);
         }
