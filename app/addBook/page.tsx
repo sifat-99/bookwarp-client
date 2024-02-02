@@ -4,10 +4,6 @@ import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import Lottie from "lottie-react";
-import Red from  "@/public/red.json"
-import Link from "next/link";
-
 const image_hosting_api: string = `https://api.imgbb.com/1/upload?key=${"e054ffbffeb28fc199b69e426ab8669e"}`;
 
 type Inputs = {
@@ -19,33 +15,33 @@ const Page = () => {
   const userEmail = session?.data?.user?.email;
   const [users, setUsers] = useState({});
 
-  console.log(session.data?.user?.email)
+//   console.log(session.data?.user?.email)
 
-  useEffect(() => {
-    axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
-        setUsers(res.data);
-    });
-  }, [userEmail]);
+//   useEffect(() => {
+//     axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
+//         setUsers(res.data);
+//     });
+//   }, [userEmail]);
 
-console.log(users)
+// console.log(users)
 
 
-  if(users)
-  {
-    if ((users as { role: string }).role !== "admin") {
-      return (
-        <div className="flex justify-center flex-col items-center h-auto">
-          <h1 className="text-4xl text-center font-bold text-black dark:text-white">
-            You are not an admin, you can&apos;t access this page
-          </h1>
-          <button className="btn bg-black text-white dark:bg-white dark:text-black mt-4">
-            <Link href="/">Go Back</Link>
-          </button>
-        </div>
-      );
+//   if(users)
+//   {
+//     if ((users as { role: string }).role !== "admin") {
+//       return (
+//         <div className="flex justify-center flex-col items-center h-auto">
+//           <h1 className="text-4xl text-center font-bold text-black dark:text-white">
+//             You are not an admin, you can&apos;t access this page
+//           </h1>
+//           <button className="btn bg-black text-white dark:bg-white dark:text-black mt-4">
+//             <Link href="/">Go Back</Link>
+//           </button>
+//         </div>
+//       );
   
-    }
-  }
+//     }
+//   }
 
 
 
