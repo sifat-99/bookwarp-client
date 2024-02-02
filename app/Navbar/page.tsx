@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaList } from "react-icons/fa";
 import ThemeSwitch from "./ThemeSwitch";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { sessionStatus } from "@/utils/session";
 
@@ -16,6 +16,18 @@ export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
   console.log(session);
+  const userEmail = session?.data?.user?.email;
+  const [users, setUsers] = useState({});
+
+  console.log(session.data?.user?.email)
+
+  useEffect(() => {
+    axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
+        setUsers(res.data);
+    });
+  }, [userEmail]);
+
+console.log(users)
 
     useEffect(() => {
 
@@ -75,6 +87,20 @@ export default function navbar() {
         <Link className="rounded-none" href="/bookmark">
           Bookmarks
         </Link>
+      </li>
+      <li>
+        {
+          (users as { role: string }).role === "admin" ? (
+            <Link className="rounded-none" href="/addBook">
+              Add Book
+            </Link>
+          ) : (
+            ""
+          )
+          // <Link className="rounded-none" href="/addBook">
+          //   Add Book
+          // </Link>
+        }
       </li>
     </>
   );

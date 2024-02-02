@@ -3,7 +3,7 @@
 import { FaBell } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import CurrentUser from "@/app/CurrntUser";
+import CurrentUser from "@/app/CurrentUser";
 
 export default function Profile() {
 
