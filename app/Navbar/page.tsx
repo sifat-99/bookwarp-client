@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { signOut, useSession } from "next-auth/react";
@@ -9,56 +10,49 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { sessionStatus } from "@/utils/session";
 
-
-
-
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
   console.log(session);
   const userEmail = session?.data?.user?.email;
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState<any>();
 
-  console.log(session.data?.user?.email)
+  console.log(session.data?.user?.email);
+
+  // console.log(users);
 
   useEffect(() => {
-    axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
+    axios
+      .get(`https://bookwarp-server.vercel.app/users/${userEmail}`)
+      .then((res) => {
         setUsers(res.data);
-    });
-  }, [userEmail]);
+      });
 
-console.log(users)
-
-    useEffect(() => {
-
-      if(session.data?.user?.email)
-      {
-        console.log(sessionStatus)
-        console.log(session)
-        axios.post("https://bookwarp-server.vercel.app/users",{
-          email: session?.data?.user?.email,
-          name: session?.data?.user?.name,
-          image: session?.data?.user?.image,
-          role: "user",
-          address: {
-            division: "",
-            district: "",
-          },
-          bloodGroup: "",
-          phone: 123,
-        })
-      }
-
+    if (session.data?.user?.email) {
+      console.log(sessionStatus);
+      console.log(session);
+      axios.post("https://bookwarp-server.vercel.app/users", {
+        email: session?.data?.user?.email as string,
+        name: session?.data?.user?.name as string,
+        image: session?.data?.user?.image as string,
+        role: "user",
+        address: {
+          division: "",
+          district: "",
+        },
+        bloodGroup: "",
+        phone: "123",
+      });
     }
-    , [session]);
+  }, [session, userEmail]);
 
-
+  console.log(users?.image);
 
   const handleSignOut = () => {
     signOut();
   };
 
-  const fullName = session?.data?.user?.name;
+  const fullName = users?.name;
 
   let lastName = "";
   if (fullName) {
@@ -90,7 +84,7 @@ console.log(users)
       </li>
       <li>
         {
-          (users as { role: string }).role === "admin" ? (
+          users?.role === "admin" ? (
             <Link className="rounded-none" href="/addBook">
               Add Book
             </Link>
@@ -129,7 +123,9 @@ console.log(users)
             />
           </Link>
           <Link href="/">
-            <h1 className="text-lg md:text-3xl font-bold ml-2 hidden md:block">BookWarp</h1>
+            <h1 className="text-lg md:text-3xl font-bold ml-2 hidden md:block">
+              BookWarp
+            </h1>
           </Link>
         </div>
       </div>
@@ -152,21 +148,11 @@ console.log(users)
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  {session.data?.user?.image ? (
-                    <Image
-                      height={56}
-                      width={56}
-                      src={session.data?.user?.image ?? ""}
-                      alt="logo"
-                    />
-                  ) : (
-                    <Image
-                      height={56}
-                      width={56}
-                      src="https://i.ibb.co/zZ66BxY/In-Shot-20240118-165615156.png"
-                      alt="logo"
-                    />
-                  )}
+                  <img
+                    className="w-10 h-10 rounded-full border-2 border-black dark:border-white"
+                    src={users?.image}
+                    alt="profile"
+                  />
                 </div>
 
                 <ul
@@ -174,15 +160,21 @@ console.log(users)
                   className=" mt-52 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] rounded-box w-64 dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white"
                 >
                   <li className=" rounded-lg mt-2 flex items-center justify-center text-center text-white">
-                    <p className="text-wrap">{session.data?.user?.name}</p>
+                    <p className="text-wrap">{users?.name}</p>
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center justify-center text-center text-white hover:bg-black dark:hover:bg-white dark:hover:text-black">
-                    <Link href={"/dashboard/profile"} className="justify-center w-full text-center flex">
+                    <Link
+                      href={"/dashboard/profile"}
+                      className="justify-center w-full text-center flex"
+                    >
                       Profile
                     </Link>
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center justify-center text-white text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
-                    <Link href={"/dashboard"} className="justify-center w-full text-center flex">
+                    <Link
+                      href={"/dashboard"}
+                      className="justify-center w-full text-center flex"
+                    >
                       Dashboard
                     </Link>
                   </li>
