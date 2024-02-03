@@ -67,8 +67,17 @@ console.log(users)
     });
 
     if (res.data.success) {
+      console.log(res.data.data.display_url)
+
       const bookInfo = {
-        ...updateData,
+        name: data.name,
+        email: data.email,
+        bloodGroup: data.bloodGroup,
+        address: {
+          division: data.division,
+          district: data.district,
+        },
+        phone: data.phone,
         image: res.data.data.display_url,
         id: crypto.randomUUID(),
       };
