@@ -14,6 +14,7 @@ import { FaEyeLowVision } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -23,12 +24,8 @@ const Login = () => {
   const [valid, setValid] = useState("");
   const [validPassword, setValidPassword] = useState("");
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-    if (file) {
-      setImage(file.name);
-    }
-  };
+  const image_hosting_api: string = `https://api.imgbb.com/1/upload?key=${"1b258f535ebc57322b29944121f24ff5"}`;
+
 
   const handleRegistrationPassword = (pass: string) => {
     setPassword(pass);
@@ -60,51 +57,80 @@ const Login = () => {
     blur: "12.5px",
   };
 
-  const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, validPassword)
-    .then((user)=>{
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Registration Successful, Login to continue',
-        showConfirmButton: true,
-        timer: 1500
-      }).then(()=>{
-        axios.post("https://bookwarp-server.vercel.app/users",{
-          email: email,
-          name: name,
-          image: image,
-          role: "user",
-          address: {
-            division: "",
-            district: "",
-          },
-          bloodGroup: "",
-          phone: "123",
-        }).then((res)=>{
-          console.log(res.data);
-        }
-        )
-        window.location.href = "/login";
-      }
-      )
-      updateProfile(user.user, {
-        displayName: name,
-        photoURL: image,
-        })
-    })
+
+  type Inputs = {
+    name: string;
+    email: string;
+    image: string;
+    password: string;
+    avatar?: FileList;
   };
+
+  const { register, handleSubmit, reset } = useForm<Inputs>();
+
+  const onSubmit = async (data: any) => {
+
+    console.log(data)
+    const imageFile = { image: data.image[0] };
+    const res = await axios.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    console.log(res)
+
+    if (res.data.success) {
+      const user = {
+        name: data.name,
+        email: data.email,
+        image: res.data.data.display_url,
+        role: "user",
+        address: {
+          division: "",
+          district: "",
+        },
+        bloodGroup: "",
+        phone: "123",
+      };
+
+
+
+      createUserWithEmailAndPassword(auth, data.email, data.password).then(
+        (user) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registration Successful, Login to continue",
+            showConfirmButton: true,
+            timer: 1500,
+          }).then(() => {
+            console.log("registration successful");
+            userPostToDB();
+          });
+        }
+      );
+
+      const userPostToDB = () => {
+        axios
+          .post("https://bookwarp-server.vercel.app/users", user)
+          .then((res) => {
+            console.log(res.data);
+            window.location.href = "/login";
+          });
+      };
+    }
+  }
 
   const handleGoogleLogin = () => {
     // console.log("google login");
-    signIn("google", { callbackUrl: "/" })
+    signIn("google", { callbackUrl: "/" });
   };
 
   const handleGithubLogin = () => {
     // console.log("github login");
-    signIn("github", { callbackUrl: "/" })
+    signIn("github", { callbackUrl: "/" });
   };
+
 
   return (
     <div className="hero">
@@ -114,26 +140,24 @@ const Login = () => {
           className="card shrink-0 w-full max-w-sm shadow-2xl"
           style={myStyle}
         >
-          <form className="card-body w-96">
+          <form className="card-body w-96" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="flex items-center justify-center">
                 <span className="label-text text-white text-4xl font-bold underline mb-8">
                   Registration
                 </span>
               </label>
-              <label htmlFor="email" className="label">
+              <label htmlFor="name" className="label">
                 <span className="label-text text-white text-xl font-bold">
                   Your Name
                 </span>
               </label>
               <input
                 type="text"
-                id="email1"
+                id="name"
                 placeholder="Your name"
                 className="input input-bordered bg-white text-black"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+                {...register("name", { required: true })}
               />
             </div>
             <div className="form-control">
@@ -147,9 +171,7 @@ const Login = () => {
                 id="email"
                 placeholder="Your email"
                 className="input input-bordered bg-white text-black"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                {...register("email", { required: true })}
               />
             </div>
             <div className="form-control">
@@ -163,14 +185,8 @@ const Login = () => {
                 id="image"
                 accept="image/*"
                 className="input bg-transparent text-black"
-                onChange={handleImageChange}
-                required
+                {...register("image", { required: true })}
               />
-              {image && (
-                <div>
-                  <p>Selected Image: {image}</p>
-                </div>
-              )}
             </div>
             <div>
               <label className="label">
@@ -184,21 +200,21 @@ const Login = () => {
                   id="password"
                   placeholder="Your password"
                   className="input w-full input-bordered bg-white text-black"
-                  value={password}
-                  onChange={(e: any) =>
-                    handleRegistrationPassword(e.target.value)
-                  }
-                  required
+                  {...register("password", { required: true })}
                 />
               </div>
               {
-                valid === "Password is valid" ? <p className="text-white text-xs italic">{valid}</p> : <p className="text-red-500 text-xs italic">{valid}</p>
+                <label className="label">
+                  <span className="label-text-alt link text-lg link-hover text-green-200 mt-2">
+                    {valid}
+                  </span>
+                </label>
               }
             </div>
             <div className="form-control mt-6">
               <button
-                onClick={(e:any) => handleRegistration(e)}
-                className="btn border-none text-white text-xl  bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] hover:bg-black"
+                type="submit"
+                className="btn border-none text-white text-xl bg-gradient-to-r from-[#4a8ab8] to bg-[#34c1ce] hover:bg-black"
               >
                 Registration
               </button>
@@ -208,34 +224,32 @@ const Login = () => {
                   Login
                 </Link>
               </p>
-
             </div>
           </form>
           <hr className="-mt-2" />
-              <div className="flex items-center justify-center gap-4">
-                <label className="label-text-alt link text-lg link-hover text-white mt-2 flex items-center gap-2">
-                  Or login with
-                </label>
+          <div className="flex items-center justify-center gap-4">
+            <label className="label-text-alt link text-lg link-hover text-white mt-2 flex items-center gap-2">
+              Or login with
+            </label>
 
-                <button
-                  onClick={handleGoogleLogin}
-                  className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 "
-                >
-                  <FcGoogle />
-                </button>
-                <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
-                  <FaFacebook />
-                </button>
-                <button
-                  onClick={handleGithubLogin}
-                  className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 "
-                >
-                  <LuGithub />
-                </button>
-              </div>
-              <hr className="mt-2 mb-2" />
+            <button
+              onClick={handleGoogleLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-green-200 mt-2 "
+            >
+              <FcGoogle />
+            </button>
+            <button className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-blue-400 mt-2 ">
+              <FaFacebook />
+            </button>
+            <button
+              onClick={handleGithubLogin}
+              className="label-text-alt link text-3xl bg-black p-2 rounded-full link-hover text-white mt-2 "
+            >
+              <LuGithub />
+            </button>
+          </div>
+          <hr className="mt-2 mb-2" />
         </div>
-        
       </div>
     </div>
   );
