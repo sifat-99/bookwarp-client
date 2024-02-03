@@ -1,5 +1,6 @@
 // @ts-nocheck
 import Books from "./Books/Books";
+import FacebookMsg from "./Components/FacebookMsg";
 import Banner from "./banner/Banner";
 import ContactUs from "./contactUs/ContactUs";
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Books/>
       {/* <h1 className="font-bold text-3xl text-center mt-14 mb-2">Featured</h1> */}
       <ContactUs />
+      <FacebookMsg />
     </main>
   );
 }
