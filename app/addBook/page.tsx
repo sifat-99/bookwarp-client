@@ -1,9 +1,10 @@
 "use client";
 import axios from "axios";
-import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import BookList from "./bookList";
 const image_hosting_api: string = `https://api.imgbb.com/1/upload?key=${"e054ffbffeb28fc199b69e426ab8669e"}`;
 
 type Inputs = {
@@ -14,36 +15,34 @@ const Page = () => {
   const session = useSession();
   const userEmail = session?.data?.user?.email;
   const [users, setUsers] = useState({});
+  const [loading, setLoading] = useState(false);
 
-//   console.log(session.data?.user?.email)
+  //   console.log(session.data?.user?.email)
 
-//   useEffect(() => {
-//     axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
-//         setUsers(res.data);
-//     });
-//   }, [userEmail]);
+  //   useEffect(() => {
+  //     axios.get(`https://bookwarp-server.vercel.app/users/${userEmail}`).then((res) => {
+  //         setUsers(res.data);
+  //     });
+  //   }, [userEmail]);
 
-// console.log(users)
+  // console.log(users)
 
+  //   if(users)
+  //   {
+  //     if ((users as { role: string }).role !== "admin") {
+  //       return (
+  //         <div className="flex justify-center flex-col items-center h-auto">
+  //           <h1 className="text-4xl text-center font-bold text-black dark:text-white">
+  //             You are not an admin, you can&apos;t access this page
+  //           </h1>
+  //           <button className="btn bg-black text-white dark:bg-white dark:text-black mt-4">
+  //             <Link href="/">Go Back</Link>
+  //           </button>
+  //         </div>
+  //       );
 
-//   if(users)
-//   {
-//     if ((users as { role: string }).role !== "admin") {
-//       return (
-//         <div className="flex justify-center flex-col items-center h-auto">
-//           <h1 className="text-4xl text-center font-bold text-black dark:text-white">
-//             You are not an admin, you can&apos;t access this page
-//           </h1>
-//           <button className="btn bg-black text-white dark:bg-white dark:text-black mt-4">
-//             <Link href="/">Go Back</Link>
-//           </button>
-//         </div>
-//       );
-  
-//     }
-//   }
-
-
+  //     }
+  //   }
 
   type Inputs = {
     title: string;
@@ -54,12 +53,13 @@ const Page = () => {
     description: string;
     avatar?: FileList;
     cover: string;
-    ratings: string
+    ratings: string;
   };
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const onSubmit = async (data: any) => {
+    setLoading(true);
     const imageFile = { image: data.cover[0] };
     const res = await axios.post(image_hosting_api, imageFile, {
       headers: {
@@ -79,19 +79,14 @@ const Page = () => {
         "https://bookwarp-server.vercel.app/allBooks",
         bookInfo
       );
-
+      setLoading(false);
       Swal.fire({
         position: "center",
         icon: "success",
         title: `Successfully New Book Added!!`,
         showConfirmButton: true,
-        showCancelButton: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-
-        }
-      }
-      );
+        showCancelButton: false,
+      });
       reset();
     }
   };
@@ -225,9 +220,18 @@ const Page = () => {
           type="submit"
           className="btn bg-black text-white dark:bg-white dark:text-black"
         >
-          Add Book
+          {loading ? (
+            <div className="flex justify-center">
+              <div className="w-8 h-8 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+            </div>
+          ) : (
+            <>Add Book</>
+          )}
         </button>
       </form>
+      <div>
+        <BookList />
+      </div>
     </>
   );
 };
