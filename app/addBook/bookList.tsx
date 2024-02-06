@@ -49,8 +49,8 @@ const BookList = () => {
   return (
     <div>
       <h2 className="text-3xl text-center font-semibold">Manage Books</h2>
-      <div className=" bg-white p-8 rounded">
-        <table className="min-w-full">
+      <div className="w-full bg-white p-8 rounded overflow-x-auto">
+        <table className="min-w-full ">
           <colgroup>
             <col className="" />
             <col className="" />
@@ -73,7 +73,7 @@ const BookList = () => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Image
                     className="object-cover hidden md:block"
-                    src="https://i.ibb.co/zJqP1Ky/banner.png"
+                    src={book?.cover || ""}
                     alt="Landscape picture"
                     height={50}
                     width={50}
