@@ -43,8 +43,8 @@ const Page = () => {
       });
   };
   return (
-    <div>
-      <h1 className="font-bold text-3xl text-center mt-14 mb-2 text-black dark:text-white">
+    <div className="pt-12 min-h-screen">
+      <h1 className="font-bold text-3xl text-center  mb-2 text-black dark:text-white">
         All Books
       </h1>
       <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
@@ -57,7 +57,7 @@ const Page = () => {
               }}
               name="Filter"
               id="Filter"
-              className="m-1 bg-red-500 border-none rounded-lg pl-2 hover:bg-blue-700 text-white"
+              className="m-1 bg-red-500 w-1/5 border-none rounded-lg pl-2 hover:bg-blue-700 text-white"
             >
               <option value="all">All</option>
               <option value="Mystery">Mystery</option>
