@@ -1,9 +1,7 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
 import { FaBell } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import CurrentUser from "@/app/CurrentUser";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -31,17 +29,22 @@ export default function Profile() {
 console.log(users)
 
   return (
-    <div className="flex gap-6 h-[50svh] w-full mt-12">
-      <div className="w-full  text-white dark:text-black border-2 rounded-md">
-        <div className="flex justify-between  bg-white dark:bg-black p-4">
-          <div className="flex items-end gap-4">
-            <div className="p-1 border shadow-md rounded-xl">
-              <img className="w-[200px] h-[200px] rounded-full" src={users?.image} alt="" />
+    <div className="flex gap-6 h-[50vh] w-full lg:mt-12 mb-32">
+      <div className="w-full  text-white dark:text-black border-2 rounded-lg">
+        <div className="flex justify-between flex-col lg:flex-row  bg-white dark:bg-black p-4">
+          <div className="flex items-center lg:items-start flex-col lg:flex-row  gap-8">
+            <div className="p-1 border max-w-72 shadow-2xl rounded-full">
+              <Image className="rounded-full" placeholder="empty" src={users?.image} height={1000} width={1000} quality={100}  alt="profile"/>
             </div>
-            <h2 className="pb-2 text-2xl font-semibold text-black dark:text-white">{users?.name}</h2>
+            <div >
+            <h2 className="pb-2 text-2xl font-semibold text-black dark:text-white border-2 rounded-lg p-4">Name: {users?.name}</h2>
+            <h1 className="pb-2 text-sm font-semibold text-black dark:text-white border-2 rounded-lg p-2 mt-4">Email: {users?.email}</h1>
+            <h1 className="pb-2 text-sm font-semibold text-black dark:text-white border-2 rounded-lg p-2 mt-4">Phone: {users?.phone}</h1>
+            <h1 className="pb-2 text-sm font-semibold text-black dark:text-white border-2 rounded-lg p-2 mt-4">Address: {users?.address?.division}, {users?.address?.district}</h1>
+            </div>
           </div>
-          <div className="flex items-end gap-3">
-          <FaBell />
+          <div className="flex items-center lg:items-end justify-center  mt-4 gap-3">
+          {/* <p className="text-black"><FaBell /></p> */}
             <Link
               href={`/dashboard/profile/${users?.email}`}
               className="bg-black dark:bg-white px-6 rounded py-1 text-white dark:text-black font-medium"
