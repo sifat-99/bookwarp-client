@@ -5,16 +5,17 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
+// BookList: React.FC<{ books: any[] }> = ({ books }) =>
 const BookList = () => {
-  const [books, setBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
     fetch("https://bookwarp-server.vercel.app/allBooks")
       .then((res) => res.json())
       .then((data) => {
-        setBooks(data);
+        setAllBooks(data);
       });
-  }, [books]);
+  }, [allBooks]);
 
   const handleBookDelete = (id: any) => {
     Swal.fire({
@@ -39,7 +40,7 @@ const BookList = () => {
               const remaining = books.filter(
                 (bookmark: any) => bookmark._id !== id
               );
-              setBooks(remaining);
+              setAllBooks(remaining);
             }
           });
       }
@@ -67,9 +68,10 @@ const BookList = () => {
               <th className="p-6 text-right">Action</th>
             </tr>
           </thead>
+          {/* book={book || ""}  */}
           <tbody className="bg-white divide-y divide-gray-200">
-            {books.map((book: any) => (
-              <tr key={book.id} book={book} className="hover:bg-gray-100">
+            {allBooks.map((book: any) => (
+              <tr key={book.id} className="hover:bg-gray-100">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Image
                     className="object-cover hidden md:block"
