@@ -745,11 +745,7 @@ const Dashboard = () => {
               examples using Tailwind CSS.
             </p>
             <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
-              <div
-                className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="https://github.com/htmlstreamofficial/preline/tree/main/examples/html"
-                target="_blank"
-              >
+              <div className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                 <svg
                   className="flex-shrink-0 w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -762,10 +758,7 @@ const Dashboard = () => {
                 </svg>
                 Get the source code
               </div>
-              <div
-                className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="../examples.html"
-              >
+              <div className="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
                 <svg
                   className="flex-shrink-0 w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
