@@ -37,9 +37,7 @@ const BookList = () => {
                 text: "Bookmark has been deleted.",
                 icon: "success",
               });
-              const remaining = books.filter(
-                (bookmark: any) => bookmark._id !== id
-              );
+              const remaining = allBooks.filter((book: any) => book._id !== id);
               setAllBooks(remaining);
             }
           });
