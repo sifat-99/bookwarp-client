@@ -50,7 +50,7 @@ export default async function bookmark() {
     }
    
     return (
-        <section className="min-h-screen pt-12">
+        <section className="min-h-screen">
             {
                 (bookMarks?.length > 0)
                 ?
