@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const update = (props: any) => {
   const session = useSession();
   const userEmail = session?.data?.user?.email;
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState<any>();
 
   console.log(session.data?.user?.email)
 
@@ -77,7 +77,7 @@ console.log(users)
           division: data.division,
           district: data.district,
         },
-        phone: data.phone,
+        phone: data.phone as string,
         image: res.data.data.display_url,
         id: crypto.randomUUID(),
       };
@@ -226,7 +226,7 @@ console.log(users)
   }
 
   return (
-    <>
+    <div className="min-h-screen">
       <form
         className="py-10  lg:w-3/4 md:mx-4 lg:mx-auto mx-auto border rounded-lg md:px-8 lg:px-20 my-20 text-black dark:text-white"
         onSubmit={handleSubmit(onSubmit)}
@@ -245,6 +245,7 @@ console.log(users)
             <input
               type="text"
               placeholder="Your name"
+              defaultValue={users?.name || ""}
               {...register("name", { required: true })}
               required
               className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
@@ -259,7 +260,7 @@ console.log(users)
               </span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={users?.address?.division || ""}
               {...register("division", { required: true })}
               className="select select-bordered w-full bg-white dark:bg-black text-black dark:text-white"
               onChange={(e) => setDivision(e.target.value)}
@@ -288,6 +289,7 @@ console.log(users)
               type="text"
               placeholder="email"
               {...register("email", { required: true })}
+              defaultValue={users?.email || ""}
               required
               className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             />
@@ -300,7 +302,7 @@ console.log(users)
               </span>
             </label>
             <select
-              defaultValue="default"
+              defaultValue={users?.address?.district || ""}
               {...register("district", { required: true })}
               className="select select-bordered w-full bg-white dark:bg-black text-black dark:text-white"
             >
@@ -319,8 +321,9 @@ console.log(users)
               </span>
             </label>
             <input
-              type="number"
+              type="text"
               placeholder="Contact Numebr"
+              defaultValue={users?.phone || ""}
               {...register("phone", { required: true })}
               required
               className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
@@ -363,7 +366,7 @@ console.log(users)
           Update
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

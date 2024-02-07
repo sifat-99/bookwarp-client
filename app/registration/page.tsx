@@ -133,7 +133,7 @@ const Login = () => {
 
 
   return (
-    <div className="hero">
+    <div className="hero  flex items-center justify-center">
       <App />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div
