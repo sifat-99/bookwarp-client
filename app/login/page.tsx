@@ -160,7 +160,7 @@ const Login = () => {
 
 
   return (
-    <div className="hero mt-12">
+    <div className="hero   flex items-center justify-center">
       <App />
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div

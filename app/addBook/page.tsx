@@ -96,9 +96,9 @@ const Page = () => {
     }
   };
   return (
-    <>
+    <div className="min-h-screen">
       <form
-        className="py-10  lg:w-3/4 md:mx-4 lg:mx-auto mx-auto border rounded-lg md:px-8 lg:px-20 my-20 text-black dark:text-white"
+        className="py-10  lg:w-3/4 md:mx-4 lg:mx-auto mx-auto border rounded-lg md:px-8 lg:px-20  text-black dark:text-white"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="text-3xl text-center py-4 font-semibold">
@@ -228,7 +228,7 @@ const Page = () => {
           Add Book
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
