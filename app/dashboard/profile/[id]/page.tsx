@@ -317,7 +317,7 @@ console.log(users)
           <div className="form-control w-full my-3">
             <label className="label">
               <span className="label-text text-black dark:text-white">
-                Cpntact Number*
+                Contact Number*
               </span>
             </label>
             <input

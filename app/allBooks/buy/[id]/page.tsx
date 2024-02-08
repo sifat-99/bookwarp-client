@@ -10,6 +10,7 @@ const Detail = (props: any) => {
   const session = useSession();
   const [current, setCurrent] = useState<any>();
   const [book, setBook] = useState<any>([]);
+  const [totalPrice, setTotalPrice] = useState<any>();
   const idURL = `https://bookwarp-server.vercel.app/allBooks/${props.params.id}`;
   useEffect(() => {
     fetch(idURL)
@@ -31,7 +32,7 @@ const Detail = (props: any) => {
   type Inputs = {
     customerName: string;
     customerEmail: string;
-    price: number;
+    quantity: number;
     contact: number;
     address: string;
   };
@@ -51,7 +52,7 @@ const Detail = (props: any) => {
               bookId: _id,
               bookTitle: title,
               bookCover: cover,
-              bookPrice: price,
+              bookPrice: price * data.quantity,
               bookWriter: writer,
               bookCategory: category,
               bookRatings: ratings,
@@ -162,14 +163,14 @@ const Detail = (props: any) => {
               <div className="form-control w-full my-3">
                 <label className="label">
                   <span className="label-text text-black dark:text-white">
-                    Price
+                    Quantity
                   </span>
                 </label>
                 <input
                   type="number"
-                  placeholder="Price"
-                  value={price}
-                  {...register("price", { required: true })}
+                  placeholder="quantity"
+                  defaultValue={1}
+                  {...register("quantity", { required: true })}
                   className="input input-bordered w-full bg-white dark:bg-black text-black dark:text-white"
                 />
               </div>
@@ -197,7 +198,7 @@ const Detail = (props: any) => {
               type="submit"
               className="btn bg-black text-white dark:bg-white dark:text-black"
             >
-                Confirm Order: {price}$
+                Confirm Order
             </button>
           </form>
         </div>
