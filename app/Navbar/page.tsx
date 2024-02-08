@@ -9,6 +9,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { sessionStatus } from "@/utils/session";
+import { usePathname } from 'next/navigation'
 
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -16,9 +17,41 @@ export default function navbar() {
   console.log(session);
   const userEmail = session?.data?.user?.email;
   const [users, setUsers] = useState<any>();
+  // const [style, setStyle] = useState({});
 
   console.log(session.data?.user?.email);
+  const currentPage = usePathname()
 
+
+//  useEffect(() => {
+//     const currentActiveStyle = () => {
+//       if (currentPage === "/") {
+//         setStyle({ color: "black" });
+//       }
+//       if (currentPage === "/allBooks") {
+//         setStyle({ color: "black" });
+//       }
+//       if (currentPage === "/blogs") {
+//         setStyle({ color: "black" });
+//       }
+//       if (currentPage === "/bookmark") {
+//         setStyle({ color: "black" });
+//       }
+//       if (currentPage === "/addBook") {
+//         setStyle({ color: "black" });
+//       }
+//     };
+//     currentActiveStyle();
+//   }
+//   , [currentPage]);
+
+
+
+
+
+ 
+
+  
   // console.log(users);
 
   useEffect(() => {
@@ -63,29 +96,29 @@ export default function navbar() {
   const links = (
     <>
       <li>
-        <Link className="rounded-none" href="/">
+        <Link className={currentPage == '/' ?" bg-black dark:bg-white text-white dark:text-black dark:lg:text-black font-bold": "bg-transparent font-bold text-black lg:text-white dark:text-white "}  href="/">
           Home
         </Link>
       </li>
       <li>
-        <Link className="rounded-none" href="/allBooks">
+        <Link className={currentPage == '/allBooks' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "} href="/allBooks">
           All Books
         </Link>
       </li>
       <li>
-        <Link className="rounded-none" href="/blogs">
+        <Link className={currentPage == '/blogs' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/blogs">
           Blogs
         </Link>
       </li>
       <li>
-        <Link className="rounded-none" href="/bookmark">
+        <Link className={currentPage == '/bookmark' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/bookmark">
           Bookmarks
         </Link>
       </li>
       <li>
         {
           users?.role === "admin" ? (
-            <Link className="rounded-none" href="/addBook">
+            <Link className={currentPage == '/addBook' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/addBook">
               Add Book
             </Link>
           ) : (
@@ -102,13 +135,13 @@ export default function navbar() {
   return (
     <div className="navbar z-20 bg-white  md:bg-gradient-to-r md:from-[#4a8ab8] to md:bg-[#34c1ce]  py-5 md:px-10 sticky dark:bg-gradient-to-r dark:from-[#0d0d0d] to dark:bg-[#010101] text-black dark:text-white md:text-white top-0 rounded-b-lg dark:border-2 border-white">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <FaList />
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white md:bg-base-100 text-black rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white dark:bg-black md:bg-base-100 text-black rounded-box w-52"
           >
             {links}
           </ul>
