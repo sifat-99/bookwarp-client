@@ -1,6 +1,8 @@
 // import useVolunteer from "../hooks/useVolunteer";
 
+import Link from "next/link";
 import Content from "./Content";
+import Header from "./Header";
 
 const Dashboard = () => {
   return (
@@ -43,8 +45,8 @@ const Dashboard = () => {
             </li>
 
             <li className="hs-accordion" id="users-accordion">
-              <button
-                type="button"
+              <Link
+                href="/addBook"
                 className="hs-accordion-toggle w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 hs-accordion-active:text-blue-600 hs-accordion-active:hover:bg-transparent text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:hs-accordion-active:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
               >
                 <svg
@@ -79,21 +81,7 @@ const Dashboard = () => {
                 >
                   <path d="m18 15-6-6-6 6" />
                 </svg>
-                <svg
-                  className="hs-accordion-active:hidden ms-auto block w-4 h-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
+              </Link>
 
               <div
                 id="users-accordion-child"
@@ -432,6 +420,7 @@ const Dashboard = () => {
                 Documentation
               </div>
             </li>
+            <li><Link href={'/'} className="btn bt-black text-white dark:bg-white dark:text-black mt-32 ">Go to home</Link></li>
           </ul>
         </div>
       </div>
@@ -439,24 +428,21 @@ const Dashboard = () => {
       {/* Outlet */}
 
       <div className="bg-base-200 w-4/5">
-        <div className="bg-white flex justify-between items-center mb-6">
+        {/* <div className="bg-white flex justify-between items-center mb-6">
           <div className="flex"></div>
 
-          {/* profile */}
+          
           <div className=" flex justify-center items-center gap-3 py-2 pr-4">
             <div>
-              {/* <img
-                  src={avatar}
-                  className="object-cover w-10 h-10 rounded-full dark:bg-gray-500"
-                /> */}
             </div>
             <div>
               <h4 className="font-medium">name</h4>
               <span className="text-xs dark:text-gray-400">role</span>
             </div>
           </div>
-        </div>
-        <div className="bg-base-200 px-6 h-[80vh]">
+        </div> */}
+        <Header/>
+        <div className="bg-base-200 px-6 h-[80vh] overflow-y-scroll">
           {" "}
           <Content />
         </div>
