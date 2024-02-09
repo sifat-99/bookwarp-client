@@ -47,8 +47,8 @@ const BookList = () => {
 
   return (
     <div>
-      <h2 className="text-3xl text-center font-semibold py-4">Manage Books</h2>
-      <div className="w-full bg-white p-8 rounded overflow-x-auto">
+      <h2 className="text-3xl bg-white text-black dark:bg-black dark:text-white text-center font-semibold py-4">Manage Books</h2>
+      <div className="w-full bg-white text-black dark:bg-black dark:text-white p-8 rounded overflow-x-auto">
         <table className="min-w-full ">
           <colgroup>
             <col className="" />
