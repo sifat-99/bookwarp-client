@@ -1,8 +1,10 @@
+import BookList from "../addBook/bookList";
+
 const Content = () => {
   return (
     <>
-      <div className="w-full">
-        {/* Page Heading */}
+      <div className="overflow-y-scroll">
+        {/* <div className="w-full">
         <header>
           <p className="mb-2 text-sm font-semibold text-blue-600">
             Starter Pages & Examples
@@ -47,7 +49,8 @@ const Content = () => {
             </div>
           </div>
         </header>
-        {/* End Page Heading */}
+      </div> */}
+        <BookList></BookList>
       </div>
     </>
   );
