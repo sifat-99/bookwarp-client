@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Content from "./Content";
+import Header from "./Header";
 
 const Dashboard = () => {
   return (
@@ -419,6 +420,7 @@ const Dashboard = () => {
                 Documentation
               </div>
             </li>
+            <li><Link href={'/'} className="btn bt-black text-white dark:bg-white dark:text-black mt-32 ">Go to home</Link></li>
           </ul>
         </div>
       </div>
@@ -426,23 +428,20 @@ const Dashboard = () => {
       {/* Outlet */}
 
       <div className="bg-base-200 w-4/5">
-        <div className="bg-white flex justify-between items-center mb-6">
+        {/* <div className="bg-white flex justify-between items-center mb-6">
           <div className="flex"></div>
 
-          {/* profile */}
+          
           <div className=" flex justify-center items-center gap-3 py-2 pr-4">
             <div>
-              {/* <img
-                  src={avatar}
-                  className="object-cover w-10 h-10 rounded-full dark:bg-gray-500"
-                /> */}
             </div>
             <div>
               <h4 className="font-medium">name</h4>
               <span className="text-xs dark:text-gray-400">role</span>
             </div>
           </div>
-        </div>
+        </div> */}
+        <Header/>
         <div className="bg-base-200 px-6 h-[80vh] overflow-y-scroll">
           {" "}
           <Content />

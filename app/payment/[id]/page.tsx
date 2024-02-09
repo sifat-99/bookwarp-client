@@ -5,6 +5,7 @@ import React from 'react'
 const PaymentMessage = (props:any) => {
 
     console.log(props.params.id)
+  
 
   return (
     <div className='flex text-black gap-8 flex-col items-center justify-center text-3xl h-screen'>
