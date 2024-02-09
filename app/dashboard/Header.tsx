@@ -1,14 +1,14 @@
 const Header = () => {
   return (
     <>
-      <div className=" inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-gray-800 dark:border-gray-700">
+      <div className="">
         <div
-          className="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8"
+          className="flex basis-full items-center w-full bg-white dark:bg-black text-black py-8 mx-auto px-4 sm:px-6 md:px-8"
           aria-label="Global"
         >
           <div className="me-5 lg:me-0 lg:hidden">
             <div
-              className="flex-none text-xl font-semibold dark:text-white"
+              className="flex-none text-xl font-semibold text-black dark:text-white"
               aria-label="Brand"
             >
               Brand

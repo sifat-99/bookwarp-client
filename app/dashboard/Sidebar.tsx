@@ -497,8 +497,11 @@ const Sidebar = () => {
                 Documentation
               </div>
             </li>
+            <li><button>Go to Home</button></li>
           </ul>
+          
         </div>
+      
       </div>
       {/* End Sidebar */}
     </>
