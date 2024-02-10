@@ -1,10 +1,10 @@
 // @ts-nocheck
-import Books from "./Books/Books";
+import Books from "./Components/Books/Books";
 import FacebookMsg from "./Components/FacebookMsg";
 import Banner from "./banner/Banner";
-import ContactUs from "./contactUs/ContactUs";
-import Navbar from "./Navbar/page";
-import Footer from "./footer/Footer";
+import ContactUs from "./Components/contactUs/ContactUs";
+import Navbar from "./Components/Navbar/page";
+import Footer from "./Components/footer/Footer";
 export default function Home() {
   return (
     <main>

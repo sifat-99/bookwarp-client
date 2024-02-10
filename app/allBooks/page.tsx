@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import BookCard from "../Books/BookCard";
+import BookCard from "../Components/Books/BookCard";
 const Page = () => {
   const [allBooks, setAllBooks] = useState([]);
   const [filteredBooks, setFilteredBooks] = useState([]);

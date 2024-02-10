@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Fira_Code,Rubik_Glitch, Inter,Cute_Font } from 'next/font/google'
-import Navbar from "./Navbar/page";
-import Footer from "./footer/Footer";
+import Navbar from "./Components/Navbar/page";
+import Footer from "./Components/footer/Footer";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import SessionProvider from "./SessionProvider";
