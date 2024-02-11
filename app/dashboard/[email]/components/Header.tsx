@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <div className="fixed w-full">
       <div
-        className="flex basis-full items-center w-full bg-gray-200 dark:bg-black text-black py-8 mx-auto px-4 sm:px-6 md:px-8"
+        className="flex basis-full items-center w-full bg-gray-200 dark:bg-slate-700 text-black py-8 mx-auto px-4 sm:px-6 md:px-8"
         aria-label="Global"
       >
         <div className="me-5 ">

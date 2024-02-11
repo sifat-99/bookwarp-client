@@ -57,7 +57,7 @@ const BookList = () => {
             <col className="" />
             <col className="" />
           </colgroup>
-          <thead className="bg-gray-100">
+          <thead className="bg-gray-100 text-black">
             <tr className="text-left">
               <th className="p-6">Image</th>
               <th className="p-6">Books Name</th>
@@ -67,12 +67,12 @@ const BookList = () => {
             </tr>
           </thead>
           {/* book={book || ""}  */}
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white dark:bg-black divide-y divide-gray-200">
             {allBooks.map((book: any) => (
-              <tr key={book.id} className="hover:bg-gray-100">
+              <tr key={book.id} className="hover:bg-gray-100 hover:text-black">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Image
-                    className="object-cover hidden md:block"
+                    className="object-cover"
                     src={book?.cover || ""}
                     alt="Landscape picture"
                     height={50}
