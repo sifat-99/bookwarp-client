@@ -10,7 +10,7 @@ function layout({ children }: { children: React.ReactNode }) {
         <div className="hidden lg:block">
         <Sidebar />
         </div>
-        <div style={{ flex: 1, overflowY: "auto", padding: "20px" }}>
+        <div style={{ flex: 1, overflowY: "auto", padding: "20px",marginTop:'100px' }}>
           {/* Content area */}
           {children}
         </div>
