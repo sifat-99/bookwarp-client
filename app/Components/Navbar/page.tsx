@@ -205,7 +205,7 @@ export default function navbar() {
                   </li>
                   <li className="border rounded-lg mt-2 flex items-center justify-center text-white text-center hover:bg-black dark:hover:bg-white dark:hover:text-black">
                     <Link
-                      href={"/dashboard/dashboard"}
+                      href={`/dashboard/${users?.email}`}
                       className="justify-center w-full text-center flex"
                     >
                       Dashboard
