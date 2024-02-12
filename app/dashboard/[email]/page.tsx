@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import Content from "./DashboardContents/Content";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 export default function Page(props: any) {
-  const email = props.params.email;
+  // const email = props.params.email;
+  const session = useSession();
+  const email = session.data?.user?.email;
   const [users, setUsers] = useState<any>();
 
   console.log(email);
