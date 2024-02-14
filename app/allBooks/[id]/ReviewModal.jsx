@@ -25,7 +25,7 @@ const ReviewModal = ({ setUserReview, userReview, id }) => {
       image: users.image,
       review: text,
     };
-    axios.post(`http://localhost:4000/review`, review).then((res) => {
+    axios.post(`https://bookwarp-server.vercel.app/review`, review).then((res) => {
       if (res.data) {
         e.target.reset();
       }
