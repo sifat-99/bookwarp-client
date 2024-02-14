@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import CurrentUser from "@/app/CurrentUser";
+
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -20,7 +20,10 @@ const Detail = (props: any) => {
   const { _id, cover, title, writer, price, description, category, ratings } =
     book;
 
-  const currentUser = CurrentUser();
+    const LocalUser = typeof window !== 'undefined' && localStorage.getItem("user");
+    const currentUser = LocalUser && JSON.parse(LocalUser);
+
+
   useEffect(() => {
     if (currentUser) {
       setCurrent(currentUser);

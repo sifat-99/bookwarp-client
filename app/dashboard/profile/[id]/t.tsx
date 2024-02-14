@@ -1,6 +1,6 @@
 "use client";
 import AllUser from "@/app/AllUser";
-import CurrentUser from "@/app/CurrentUser";
+// import CurrentUser from "@/app/CurrentUser";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
@@ -8,7 +8,9 @@ import Swal from "sweetalert2";
 
 const UpdateProfile = (props: any) => {
   const { id } = props.params;
-  const currentUser:any = CurrentUser();
+  // const currentUser:any = CurrentUser();
+  const LocalUser = typeof window !== 'undefined' && localStorage.getItem("user");
+  const currentUser = LocalUser && JSON.parse(LocalUser);
   const session = useSession();
   const [division, setDivision] = useState(currentUser?.address?.division);
   const [district, setDistrict] = useState(currentUser?.address?.district);
@@ -16,7 +18,7 @@ const UpdateProfile = (props: any) => {
   const [avatar, setAvatar] = useState(currentUser?.avatar);
   const [bloodGroup, setBloodGroup] = useState(currentUser?.bloodGroup);
 
-  console.log(currentUser)
+  // console.log(currentUser)
 
   const { email, name, bloodGroup: bg, phone, image } = currentUser as any;
 
