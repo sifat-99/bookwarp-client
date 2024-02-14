@@ -121,6 +121,8 @@ const Login = () => {
     signIn("github", { callbackUrl: "/" });
   };
 
+
+
   return (
     <div className="hero  flex items-center justify-center">
       <App />

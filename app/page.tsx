@@ -1,4 +1,4 @@
-// @ts-nocheck
+"use client"
 import Books from "./Components/Books/Books";
 import FacebookMsg from "./Components/FacebookMsg";
 import Banner from "./banner/Banner";

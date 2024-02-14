@@ -9,9 +9,8 @@ import ThemeSwitch from "./ThemeSwitch";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { sessionStatus } from "@/utils/session";
-import { usePathname } from 'next/navigation'
-import CurrentUser from "@/app/CurrentUser";
-
+import { usePathname } from "next/navigation";
+// import CurrentUser from "@/app/CurrentUser";
 
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -19,54 +18,42 @@ export default function navbar() {
   console.log(session);
   const userEmail = session?.data?.user?.email;
   const [users, setUsers] = useState<any>();
-  // const [style, setStyle] = useState({});
 
   console.log(session.data?.user?.email);
-  const currentPage = usePathname()
+  const currentPage = usePathname();
 
-const current = CurrentUser();
+  const LocalUser = typeof window !== 'undefined' && localStorage.getItem("user");
+ useEffect(() => {
+    if (LocalUser) {
+      setUsers(JSON.parse(LocalUser));
+    }
+  }, [LocalUser]);
 
-console.log(current)
+  //  useEffect(() => {
+  //     const currentActiveStyle = () => {
+  //       if (currentPage === "/") {
+  //         setStyle({ color: "black" });
+  //       }
+  //       if (currentPage === "/allBooks") {
+  //         setStyle({ color: "black" });
+  //       }
+  //       if (currentPage === "/blogs") {
+  //         setStyle({ color: "black" });
+  //       }
+  //       if (currentPage === "/bookmark") {
+  //         setStyle({ color: "black" });
+  //       }
+  //       if (currentPage === "/addBook") {
+  //         setStyle({ color: "black" });
+  //       }
+  //     };
+  //     currentActiveStyle();
+  //   }
+  //   , [currentPage]);
 
-
-
-
-
-//  useEffect(() => {
-//     const currentActiveStyle = () => {
-//       if (currentPage === "/") {
-//         setStyle({ color: "black" });
-//       }
-//       if (currentPage === "/allBooks") {
-//         setStyle({ color: "black" });
-//       }
-//       if (currentPage === "/blogs") {
-//         setStyle({ color: "black" });
-//       }
-//       if (currentPage === "/bookmark") {
-//         setStyle({ color: "black" });
-//       }
-//       if (currentPage === "/addBook") {
-//         setStyle({ color: "black" });
-//       }
-//     };
-//     currentActiveStyle();
-//   }
-//   , [currentPage]);
-
-
-
-
-
- 
-
-  
   // console.log(users);
 
   useEffect(() => {
-
-setUsers(current);
-
     if (session.data?.user?.email) {
       console.log(sessionStatus);
       console.log(session);
@@ -83,7 +70,7 @@ setUsers(current);
         phone: "123",
       });
     }
-  }, [current, session, userEmail]);
+  }, [session, userEmail]);
 
   console.log(users?.image);
 
@@ -102,29 +89,64 @@ setUsers(current);
   const links = (
     <>
       <li>
-        <Link className={currentPage == '/' ?" bg-black dark:bg-white text-white dark:text-black dark:lg:text-black font-bold": "bg-transparent font-bold text-black lg:text-white dark:text-white "}  href="/">
+        <Link
+          className={
+            currentPage == "/"
+              ? " bg-black dark:bg-white text-white dark:text-black dark:lg:text-black font-bold"
+              : "bg-transparent font-bold text-black lg:text-white dark:text-white "
+          }
+          href="/"
+        >
           Home
         </Link>
       </li>
       <li>
-        <Link className={currentPage == '/allBooks' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "} href="/allBooks">
+        <Link
+          className={
+            currentPage == "/allBooks"
+              ? " bg-black dark:bg-white text-white dark:text-black font-bold"
+              : "bg-transparent text-black font-bold lg:text-white dark:text-white "
+          }
+          href="/allBooks"
+        >
           All Books
         </Link>
       </li>
       <li>
-        <Link className={currentPage == '/blogs' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/blogs">
+        <Link
+          className={
+            currentPage == "/blogs"
+              ? " bg-black dark:bg-white text-white dark:text-black font-bold"
+              : "bg-transparent text-black font-bold lg:text-white dark:text-white "
+          }
+          href="/blogs"
+        >
           Blogs
         </Link>
       </li>
       <li>
-        <Link className={currentPage == '/bookmark' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/bookmark">
+        <Link
+          className={
+            currentPage == "/bookmark"
+              ? " bg-black dark:bg-white text-white dark:text-black font-bold"
+              : "bg-transparent text-black font-bold lg:text-white dark:text-white "
+          }
+          href="/bookmark"
+        >
           Bookmarks
         </Link>
       </li>
       <li>
         {
           users?.role === "admin" ? (
-            <Link className={currentPage == '/addBook' ?" bg-black dark:bg-white text-white dark:text-black font-bold": "bg-transparent text-black font-bold lg:text-white dark:text-white "}  href="/addBook">
+            <Link
+              className={
+                currentPage == "/addBook"
+                  ? " bg-black dark:bg-white text-white dark:text-black font-bold"
+                  : "bg-transparent text-black font-bold lg:text-white dark:text-white "
+              }
+              href="/addBook"
+            >
               Add Book
             </Link>
           ) : (

@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import App from "../tsParticles";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -9,6 +9,7 @@ import { FaHandPointDown } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { signIn, useSession } from "next-auth/react";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
 
@@ -40,20 +41,7 @@ const Login = () => {
         email,
         password,
         redirect: true,
-        callbackUrl: "/",
-      });
-  
-      // If signIn succeeds, show alert
-        await session ??  Swal.fire({
-            icon: "success",
-            title: "Login Successful",
-            text: "You are logged in successfully, Redirecting to home page",
-            timer: 2000,
-            showConfirmButton: true,
-          }).then(() => {
-          window.location.href = `/`;
-          }
-          );
+      })
   
       // Optionally, you can also navigate to a different page after successful login
       // window.location.href = "/dashboard"; // Example navigation
@@ -70,10 +58,10 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       // Call signIn function for Google login
-      await signIn("google", { callbackUrl: "/" });
+      await signIn("google");
   
       // If Google login succeeds, show alert
-     await session ?? Swal.fire({
+      session ?? Swal.fire({
         icon: "success",
         title: "Login Successful",
         text: "You are logged in successfully, Redirecting to home page",
@@ -157,6 +145,28 @@ const Login = () => {
     }
       
   };
+
+
+  useEffect(() => {
+    if (session?.data?.user) {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You are logged in successfully, Redirecting to home page",
+        timer: 2000,
+        showConfirmButton: true,
+      }).then(() => {
+        axios.get(`https://bookwarp-server.vercel.app/users/${session?.data?.user?.email}`)
+        .then((res)=>
+        {
+          if(res.data)
+          {
+            localStorage.setItem("user", JSON.stringify(res.data));
+          }
+        })
+      });
+    }
+  },[session]);
 
 
   return (
