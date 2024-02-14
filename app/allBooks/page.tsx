@@ -44,9 +44,9 @@ const Page = () => {
   };
   return (
     <div className="pt-12 min-h-screen">
-      <h1 className="font-bold text-3xl text-center  mb-2 text-black dark:text-white">
+      <div className="font-bold text-3xl text-center  mb-2 text-black dark:text-white">
         All Books
-      </h1>
+      </div>
       <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
         {/* <!-- Form --> */}
         <form onSubmit={handleSearch}>

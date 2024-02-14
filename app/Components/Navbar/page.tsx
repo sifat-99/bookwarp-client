@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { sessionStatus } from "@/utils/session";
 import { usePathname } from 'next/navigation'
+import CurrentUser from "@/app/CurrentUser";
+
 
 export default function navbar() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -21,6 +23,13 @@ export default function navbar() {
 
   console.log(session.data?.user?.email);
   const currentPage = usePathname()
+
+const current = CurrentUser();
+
+console.log(current)
+
+
+
 
 
 //  useEffect(() => {
@@ -55,11 +64,8 @@ export default function navbar() {
   // console.log(users);
 
   useEffect(() => {
-    axios
-      .get(`https://bookwarp-server.vercel.app/users/${userEmail}`)
-      .then((res) => {
-        setUsers(res.data);
-      });
+
+setUsers(current);
 
     if (session.data?.user?.email) {
       console.log(sessionStatus);
@@ -77,7 +83,7 @@ export default function navbar() {
         phone: "123",
       });
     }
-  }, [session, userEmail]);
+  }, [current, session, userEmail]);
 
   console.log(users?.image);
 

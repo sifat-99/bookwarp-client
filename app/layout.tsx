@@ -29,9 +29,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  withNavbar = true, // Add a default value for withNavbar
 }: {
   children: React.ReactNode;
-}) {
+  withNavbar?: boolean; // Define withNavbar as a boolean prop
+})  {
   return (
     <html lang="en">
       <head>
@@ -45,6 +47,7 @@ export default function RootLayout({
       <body className={`${poppins.className} mx-auto bg-white dark:bg-black`}>
         <Providers>
           <SessionProvider>
+          {withNavbar && <Navbar />} 
             <main>{children}</main>
             <ToastContainer />
           </SessionProvider>
