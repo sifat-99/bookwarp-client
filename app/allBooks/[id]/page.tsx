@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import ReviewCart from "./ReviewCart.jsx";
 import ReviewModal from "./ReviewModal.jsx";
 
 const Detail = (props: any) => {
   const [book, setBook] = useState<any>([]);
+  const [review, setReview] = useState<any>([]);
   const [userReview, setUserReview] = useState([]);
 
   const idURL = `https://bookwarp-server.vercel.app/allBooks/${props.params.id}`;
@@ -14,8 +16,24 @@ const Detail = (props: any) => {
       .then((res) => res.json())
       .then((data) => setBook(data));
   }, [idURL]);
-  const { _id, cover, title, writer, price, description, category, ratings } =
-    book;
+  const {
+    _id,
+    id,
+    cover,
+    title,
+    writer,
+    price,
+    description,
+    category,
+    ratings,
+  } = book;
+
+  useEffect(() => {
+    axios.get(`https://bookwarp-server.vercel.app/review`).then((res) => {
+      setReview(res.data);
+    });
+  }, []);
+
   return (
     <div className="bg-white  text-black dark:bg-black dark:text-white">
       <h1 className="font-bold text-3xl text-center mt-14 mb-2">Book Detail</h1>
@@ -48,14 +66,18 @@ const Detail = (props: any) => {
         </div>
       </div>
       <div>
-        <ReviewModal setUserReview={setUserReview} userReview={userReview} />
+        <ReviewModal
+          setUserReview={setUserReview}
+          userReview={userReview}
+          id={id}
+        />
         <h2 className="text-center text-3xl font-bold py-10">
           Customer Review
         </h2>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {/* review */}
-        {userReview.map((review) => (
+        {review.map((review) => (
           <ReviewCart key={review} review={review} />
         ))}
 

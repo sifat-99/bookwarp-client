@@ -2,11 +2,12 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-const ReviewModal = ({ setUserReview, userReview }) => {
+const ReviewModal = ({ setUserReview, userReview, id }) => {
   const session = useSession();
   const userEmail = session?.data?.user?.email;
   //   const [users, setUsers] = useState<any>();
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     axios
       .get(`https://bookwarp-server.vercel.app/users/${userEmail}`)
@@ -14,16 +15,22 @@ const ReviewModal = ({ setUserReview, userReview }) => {
         setUsers(res.data);
       });
   }, [session, userEmail]);
+
   const handleAddReview = (e) => {
     e.preventDefault();
     const text = e.target.review.value;
     const review = {
+      bookId: id,
       name: users.name,
       image: users.image,
       review: text,
     };
-    setUserReview([...userReview, review]);
-    e.target.reset();
+    axios.post(`http://localhost:4000/review`, review).then((res) => {
+      if (res.data) {
+        e.target.reset();
+      }
+    });
+    // setUserReview([...userReview, review])
   };
   return (
     <div className="flex flex-col mx-auto max-w-xl border my-10 p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-900 dark:text-gray-100">
