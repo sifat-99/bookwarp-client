@@ -77,7 +77,7 @@ const Detail = (props: any) => {
       </div>
       <div className="grid grid-cols-3 gap-4">
         {/* review */}
-        {review.map((review) => (
+        {review.map((review:any) => (
           <ReviewCart key={review} review={review} />
         ))}
 
