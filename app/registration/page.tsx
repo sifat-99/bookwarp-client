@@ -1,20 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import App from "../tsParticles";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa";
-import { LuGithub } from "react-icons/lu";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/config/firebase";
-import { signIn } from "next-auth/react";
-import { FaEye } from "react-icons/fa";
-import { FaEyeLowVision } from "react-icons/fa6";
-import { toast } from "react-toastify";
-import Swal from "sweetalert2";
 import axios from "axios";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaFacebook } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { LuGithub } from "react-icons/lu";
+import Swal from "sweetalert2";
+import App from "../tsParticles";
 
 const Login = () => {
   const [name, setName] = useState("");
@@ -25,7 +22,6 @@ const Login = () => {
   const [validPassword, setValidPassword] = useState("");
 
   const image_hosting_api: string = `https://api.imgbb.com/1/upload?key=${"1b258f535ebc57322b29944121f24ff5"}`;
-
 
   const handleRegistrationPassword = (pass: string) => {
     setPassword(pass);
@@ -57,7 +53,6 @@ const Login = () => {
     blur: "12.5px",
   };
 
-
   type Inputs = {
     name: string;
     email: string;
@@ -69,15 +64,13 @@ const Login = () => {
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const onSubmit = async (data: any) => {
-
-    console.log(data)
+    console.log(data);
     const imageFile = { image: data.image[0] };
     const res = await axios.post(image_hosting_api, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
-    console.log(res)
 
     if (res.data.success) {
       const user = {
@@ -92,8 +85,6 @@ const Login = () => {
         bloodGroup: "",
         phone: "123",
       };
-
-
 
       createUserWithEmailAndPassword(auth, data.email, data.password).then(
         (user) => {
@@ -114,12 +105,11 @@ const Login = () => {
         axios
           .post("https://bookwarp-server.vercel.app/users", user)
           .then((res) => {
-            console.log(res.data);
             window.location.href = "/login";
           });
       };
     }
-  }
+  };
 
   const handleGoogleLogin = () => {
     // console.log("google login");
@@ -130,7 +120,6 @@ const Login = () => {
     // console.log("github login");
     signIn("github", { callbackUrl: "/" });
   };
-
 
   return (
     <div className="hero  flex items-center justify-center">
